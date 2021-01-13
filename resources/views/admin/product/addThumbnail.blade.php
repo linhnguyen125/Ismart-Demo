@@ -73,7 +73,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (!empty($thumbnails))
+                                @if ($thumbnails->count() > 0)
                                     @php
                                     $t = 0;
                                     @endphp
@@ -83,7 +83,7 @@
                                         @endphp
                                         <tr class="">
                                             <td>{{ $t }}</td>
-                                            <td><img style="width: 80px; height: 80px;" src="{{ asset($thumbnail->path) }}"
+                                            <td><img style="width: 80px; height: auto;" src="{{ asset($thumbnail->path) }}"
                                                     class="img-fluid img-thumbnail" alt="ảnh sản phẩm"></td>
                                             <td>@if (!empty($thumbnail->color_name))
                                                 {{ $thumbnail->color_name }}

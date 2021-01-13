@@ -8,9 +8,10 @@ class Banner extends Model
 {
     //
 
-    protected $fillable = ['id','path','status','user_id'];
+    protected $fillable = ['id', 'path', 'description', 'status', 'user_id'];
 
-    function user(){
+    function user()
+    {
         return $this->belongsTo('App\User');
     }
 }

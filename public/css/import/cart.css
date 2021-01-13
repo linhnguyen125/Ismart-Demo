@@ -39,7 +39,7 @@
 #info-cart-wp table tbody tr td .thumb{
     display: inline-block;
     width: 100px;
-    min-height: 100px;
+    height: auto;
     overflow: hidden;
     border: 1px solid #ccc;
 }

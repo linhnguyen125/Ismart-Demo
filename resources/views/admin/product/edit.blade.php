@@ -32,11 +32,11 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-md-2">
-                                        <img style="width: 80px; height: 80px" src="{{ asset($product->avatar) }}"
+                                    <div class="col-md-3">
+                                        <img style="width: 80px; height: auto;" src="{{ asset($product->avatar) }}"
                                             alt="ảnh cũ">
                                     </div>
-                                    <div class="col-md-10">
+                                    <div class="col-md-9">
                                         <label for="file">(Chọn ảnh thumbnail)</label>
                                         <input type="file" name="thumbnail" class="form-control-file mt-2" id="file">
                                         @error('thumbnail')

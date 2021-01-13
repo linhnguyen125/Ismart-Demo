@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <img style="width: 80px; height: 80px" src="{{ asset($thumbnail->path) }}"
+                                <img style="width: 80px; height: auto;" src="{{ asset($thumbnail->path) }}"
                                     alt="ảnh cũ">
                             </div>
                             <div class="col-md-10">

@@ -67,7 +67,7 @@
                         @endphp
                             <tr>
                             <td>{{$t}}</td>
-                            <td><img style="width: 80px; height: 80px;" src="{{asset($item->avatar)}}" class="img-fluid img-thumbnail" alt="ảnh sản phẩm"></td>
+                            <td><img style="width: 80px; height: auto;" src="{{asset($item->avatar)}}" class="img-fluid img-thumbnail" alt="ảnh sản phẩm"></td>
                             <td><a href="#">{{$item->title}}</a></td>
                             <td>{{ number_format($item->price, 0, '', '.') }}đ</td>
                             <td class="text-center">{{$detail->qty}}</td>

@@ -70,7 +70,7 @@
                                     <input type="checkbox" name="list_check[]" value="{{$product->id}}">
                                 </td>
                                 <td>{{$t}}</td>
-                                <td><img style="width: 80px; height: 80px;" src="{{asset($product->avatar)}}" class="img-fluid img-thumbnail" alt="ảnh sản phẩm"></td>
+                                <td><img style="width: 80px; height: auto;" src="{{asset($product->avatar)}}" class="img-fluid img-thumbnail" alt="ảnh sản phẩm"></td>
                                 <td><a href="#">{{$product->title}}</a></td>
                                 <td>{{ number_format($product->price, 0, '', '.') }}đ</td>
                                 <td>{{$product->product_cat->name}}</td>

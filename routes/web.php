@@ -88,7 +88,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //==================== BANNERS =========================
 
     Route::get('admin/banner/list', 'AdminBannerController@list');
-    Route::get('admin/banner/add', 'AdminBannerController@add');
+    Route::post('admin/banner/store', 'AdminBannerController@store');
+    Route::get('admin/banner/edit/{id}', 'AdminBannerController@edit')->name('edit_banner');
+    Route::get('admin/banner/delete/{id}', 'AdminBannerController@delete')->name('delete_banner');
+    Route::post('admin/banner/update/{id}', 'AdminBannerController@update')->name('update_banner');
+    // Route::get('admin/banner/add', 'AdminBannerController@add');
 
 });
 

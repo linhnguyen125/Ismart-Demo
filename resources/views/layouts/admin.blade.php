@@ -160,7 +160,7 @@
                             <li><a href="{{url('admin/order/list')}}" class="{{session('action') == 'list'?'text-primary':''}}">Đơn hàng</a></li>
                         </ul>
                     </li>
-                    <li class="nav-link {{$module_active=='user'?'active':''}}">
+                    <li class="nav-link {{$module_active=='user'?'active':''}}"> 
                         <a href="{{url('admin/user/list')}}">
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
@@ -186,7 +186,7 @@
 
                         <ul class="sub-menu">
                             <li><a href="{{url('admin/banner/list')}}" class="{{session('action') == 'list'?'text-primary':''}}">Danh sách</a></li>
-                            <li><a href="{{url('admin/banner/add')}}" class="{{session('action') == 'add'?'text-primary':''}}">Thêm mới</a></li>
+                            {{-- <li><a href="{{url('admin/banner/add')}}" class="{{session('action') == 'add'?'text-primary':''}}">Thêm mới</a></li> --}}
                         </ul>
                     </li>
 

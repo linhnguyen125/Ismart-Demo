@@ -116,7 +116,7 @@
                                                 <li class="clearfix">
                                                     <a href="{{ route('detail_product', $row->id) }}" title=""
                                                         class="thumb fl-left">
-                                                        <img src="{{ asset($row->options->thumbnail) }}" alt="">
+                                                        <img class="img-fluid" src="{{ asset($row->options->thumbnail) }}" alt="">
                                                     </a>
                                                     <div class="info fl-right">
                                                         <a href="{{ route('detail_product', $row->id) }}" title=""

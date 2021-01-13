@@ -49,7 +49,8 @@
                                         <td style="width: 30px;">{{ $t }}</td>
                                         <td>
                                             <a href="{{ route('detail_product', $row->id) }}" title="" class="thumb">
-                                                <img src="{{ asset($row->options->thumbnail) }}" alt="">
+                                                <img class="img img-fluid"
+                                                    src="{{ asset($row->options->thumbnail) }}" alt="">
                                             </a>
                                         </td>
                                         <td>
