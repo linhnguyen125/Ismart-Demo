@@ -49,8 +49,8 @@
                                         <td style="width: 30px;">{{ $t }}</td>
                                         <td>
                                             <a href="{{ route('detail_product', $row->id) }}" title="" class="thumb">
-                                                <img class="img img-fluid"
-                                                    src="{{ asset($row->options->thumbnail) }}" alt="">
+                                                <img class="img img-fluid" src="{{ asset($row->options->thumbnail) }}"
+                                                    alt="">
                                             </a>
                                         </td>
                                         <td>
@@ -111,7 +111,7 @@
                                 <td colspan="7">
                                     <div class="clearfix">
                                         <div class="fl-right">
-                                            <a href="?page=checkout" title="" id="checkout-cart">Thanh toán</a>
+                                            <a href="{{ url('checkout/show') }}" title="" id="checkout-cart">Thanh toán</a>
                                         </div>
                                     </div>
                                 </td>

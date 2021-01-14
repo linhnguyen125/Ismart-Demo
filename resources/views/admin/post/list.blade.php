@@ -54,7 +54,7 @@
                                 <th scope="col">Ảnh</th>
                                 <th scope="col" id="title">Tiêu đề</th>
                                 <th scope="col">Danh mục</th>
-                                <th scope="col">Ngày tạo</th>
+                                <th scope="col">Trạng thái</th>
                                 <th scope="col">Tác vụ</th>
                             </tr>
                         </thead>
@@ -69,14 +69,18 @@
                                     @endphp
                                     <tr>
                                         <td>
-                                            <input type="checkbox" name="list_check[]" value="{{$post->id}}">
+                                            <input type="checkbox" name="list_check[]" value="{{ $post->id }}">
                                         </td>
                                         <td scope="row">{{ $temp }}</td>
-                                        <td><img style="width: 80px; height: 80px;" src="{{asset($post->thumbnail)}}"
+                                        <td><img style="width: 80px; height: auto;" src="{{ asset($post->thumbnail) }}"
                                                 class="img-fluid img-thumbnail" alt="ảnh bài viết"></td>
                                         <td><a href="">{{ $post->title }}</a></td>
                                         <td>{{ $post->post_cat->name }}</td>
-                                        <td>{{ $post->created_at }}</td>
+                                        @if ($post->post_status_id == '2')
+                                            <td><span class="badge badge-success">Công khai</span></td>
+                                        @else
+                                            <td><span class="badge badge-warning">Chờ duyệt</span></td>
+                                        @endif
                                         <td><a href="{{ route('edit_post', $post->id) }}"
                                                 class="btn btn-success btn-sm rounded-0 text-white" type="button"
                                                 data-toggle="tooltip" data-placement="top" title="Edit"><i

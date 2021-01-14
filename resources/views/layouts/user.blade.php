@@ -59,13 +59,18 @@
                                         chủ</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('page/blog') }}" title="">Blog</a>
+                                    <a href="{{ url('page/blog') }}"
+                                        style="{{ $module_active == 'blog' ? 'color: yellow' : '' }}" title="">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="?page=detail_blog" title="">Giới thiệu</a>
+                                    <a href="{{ url('introduce') }}"
+                                        style="{{ $module_active == 'introduce' ? 'color: yellow' : '' }}" title="">Giới
+                                        thiệu</a>
                                 </li>
                                 <li>
-                                    <a href="?page=detail_blog" title="">Liên hệ</a>
+                                    <a href="{{ url('contact') }}"
+                                        style="{{ $module_active == 'contact' ? 'color: yellow' : '' }}" title="">Liên
+                                        hệ</a>
                                 </li>
                                 @if (Route::has('login'))
                                     @auth
@@ -109,14 +114,16 @@
                                     <span id="num">{{ Cart::content()->count() }}</span>
                                 </div>
                                 <div id="dropdown">
-                                    <p class="desc">Có <span>{{ Cart::content()->count() }}</span> sản phẩm trong giỏ hàng</p>
+                                    <p class="desc">Có <span>{{ Cart::content()->count() }}</span> sản phẩm trong giỏ
+                                        hàng</p>
                                     @if (Cart::count() > 0)
                                         @foreach (Cart::content() as $row)
                                             <ul class="list-cart">
                                                 <li class="clearfix">
                                                     <a href="{{ route('detail_product', $row->id) }}" title=""
                                                         class="thumb fl-left">
-                                                        <img class="img-fluid" src="{{ asset($row->options->thumbnail) }}" alt="">
+                                                        <img class="img-fluid"
+                                                            src="{{ asset($row->options->thumbnail) }}" alt="">
                                                     </a>
                                                     <div class="info fl-right">
                                                         <a href="{{ route('detail_product', $row->id) }}" title=""
@@ -136,7 +143,8 @@
                                     <div class="action-cart clearfix">
                                         <a href="{{ route('cart_show') }}" title="Giỏ hàng"
                                             class="view-cart fl-left">Giỏ hàng</a>
-                                        <a href="?page=checkout" title="Thanh toán" class="checkout fl-right">Thanh
+                                        <a href="{{ url('checkout/show') }}" title="Thanh toán"
+                                            class="checkout fl-right">Thanh
                                             toán</a>
                                     </div>
                                 </div>

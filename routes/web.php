@@ -105,7 +105,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 //=================== PAGE =======================
 
 Route::get('page/blog', 'UserPageController@blog');
-Route::get('page/blog/detail', 'UserPageController@detail_blog');
+Route::get('page/blog/detail/{id}', 'UserPageController@detail_blog')->name('detail_blog');
 
 //==================== HOME ======================
 
@@ -127,9 +127,18 @@ Route::get('cart/remove/{rowId}', 'UserCartController@remove')->name('cart_remov
 Route::get('cart/destroy', 'UserCartController@destroy')->name('cart_destroy');
 Route::get('cart/update', 'UserCartController@update');
 
+//==================== INTRODUCE =====================
+Route::get('introduce', 'UserIntroduceController@introduce');
+
+//==================== CONTACT =====================
+Route::get('contact', 'UserContactController@contact');
+
+//==================== CHECKOUT =====================
+Route::get('checkout/show', 'UserCheckoutController@show');
+Route::get('checkout/updateDistrict', 'UserCheckoutController@updateDistrict');
+Route::post('checkout/store', 'UserCheckoutController@store')->name('store_checkout');
+
 //=================== FILE MANAGER ======================
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
-}); 
-
-
+});

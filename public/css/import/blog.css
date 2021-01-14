@@ -8,8 +8,8 @@
 }
 #list-blog-wp .list-item li{ padding-bottom: 30px;}
 #list-blog-wp .list-item li:last-child{ padding-bottom: 0;}
-#list-blog-wp .thumb{ width: 30%;}
-#list-blog-wp .info{ width: 70%; padding-left: 25px;}
+#list-blog-wp .thumb{ width: 20%;}
+#list-blog-wp .info{ width: 80%; padding-left: 25px;}
 #list-blog-wp .info .title{
     display: block;
     font-size: 21px;
@@ -35,6 +35,9 @@
     font-size: 14px;
 }
 #list-blog-wp .info .desc{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     line-height: 26px;
     color: #3f3f3f;
     text-align: justify;
@@ -46,5 +49,4 @@
     -moz-box-orient: vertical;
     -o-box-orient: vertical;
     max-height: 100%;
-    overflow: hidden;
 }

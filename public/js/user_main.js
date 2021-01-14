@@ -31,8 +31,31 @@ function updateCart(qty, rowId) {
         urlUpdate,
         { qty: qty, rowId: rowId },
         function () {
-            // location.reload();
             $("#info-cart-wp").load(url);
+        }
+    );
+};
+
+function selectProvince(provinceId, urlUpdate) {
+    var url = location.href;
+    url += " #district";
+    $.get(
+        urlUpdate,
+        { provinceId: provinceId },
+        function () {
+            $("#checkoutSelect").load(url);
+        }
+    );
+};
+
+function selectDistrict(districtId, urlUpdate) {
+    var url = location.href;
+    url += " #ward";
+    $.get(
+        urlUpdate,
+        { districtId: districtId },
+        function () {
+            $("#checkoutSelect").load(url);
         }
     );
 }
