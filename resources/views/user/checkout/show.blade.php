@@ -97,21 +97,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="cart-item">
-                                <td class="product-name">Son môi nữ cá tính<strong class="product-quantity">x 1</strong>
-                                </td>
-                                <td class="product-total">350.000đ</td>
-                            </tr>
-                            <tr class="cart-item">
-                                <td class="product-name">Đồ tẩy trang nhập khẩu Mỹ<strong class="product-quantity">x
-                                        2</strong></td>
-                                <td class="product-total">500.000đ</td>
-                            </tr>
+                            @foreach (Cart::content() as $row)
+                                <tr class="cart-item">
+                                    <td class="product-name">{{ $row->name }} <strong class="product-quantity"> x
+                                            {{ $row->qty }}</strong>
+                                    </td>
+                                    <td class="product-total">{{ number_format($row->total, 0, ',', '.') }}đ</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                         <tfoot>
                             <tr class="order-total">
                                 <td>Tổng đơn hàng:</td>
-                                <td><strong class="total-price">800.000đ</strong></td>
+                                <td><strong class="total-price">{{ Cart::total() }}</strong>
+                                </td>
                             </tr>
                         </tfoot>
                     </table>
