@@ -31,8 +31,21 @@ class UserCheckoutController extends Controller
         return view('user.checkout.show', compact('provinces', 'districts', 'wards'));
     }
 
-    function updateDistrict(Request $request){
-        
+    function updateDistrict(Request $request)
+    {
+        $districts = District::where('province_id', '=', $request->provinceId)->get();
+        echo '<option value="0" selected>------- Quận/Huyện -------</option>';
+        foreach ($districts as $district) {
+            echo '<option value = "' . $district->id . '">' . $district->name . '</option>';
+        }
     }
-        
+
+    function updateWard(Request $request)
+    {
+        $wards = Ward::where('district_id', '=', $request->districtId)->get();
+        echo '<option value="0" selected>-------- Phường/Xã --------</option>';
+        foreach ($wards as $ward) {
+            echo '<option value = "' . $ward->id . '">' . $ward->name . '</option>';
+        }
+    }
 }

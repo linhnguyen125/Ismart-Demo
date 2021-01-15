@@ -37,25 +37,21 @@ function updateCart(qty, rowId) {
 };
 
 function selectProvince(provinceId, urlUpdate) {
-    var url = location.href;
-    url += " #district";
     $.get(
         urlUpdate,
         { provinceId: provinceId },
-        function () {
-            $("#checkoutSelect").load(url);
+        function (data) {
+            $("#district").html(data);
         }
     );
 };
 
 function selectDistrict(districtId, urlUpdate) {
-    var url = location.href;
-    url += " #ward";
     $.get(
         urlUpdate,
         { districtId: districtId },
-        function () {
-            $("#checkoutSelect").load(url);
+        function (data) {
+            $("#ward").html(data);
         }
     );
 }

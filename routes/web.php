@@ -136,6 +136,7 @@ Route::get('contact', 'UserContactController@contact');
 //==================== CHECKOUT =====================
 Route::get('checkout/show', 'UserCheckoutController@show');
 Route::get('checkout/updateDistrict', 'UserCheckoutController@updateDistrict');
+Route::get('checkout/updateWard', 'UserCheckoutController@updateWard');
 Route::post('checkout/store', 'UserCheckoutController@store')->name('store_checkout');
 
 //=================== FILE MANAGER ======================

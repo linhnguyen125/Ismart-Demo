@@ -36,17 +36,19 @@
                         </div>
                         <div class="mt-3 mb-3 pb-2 d-flex">
                             <div>
-                                <select id="province" style="display: inline-block; height:25px" class="form-select mr-4"
+                                <select id="province" style="display: inline-block; height:25px; width: 170px"
+                                    class="form-select mr-4"
                                     onchange="selectProvince(this.value, '{{ url('/checkout/updateDistrict') }}')">
-                                    <option value="0" selected>------ Tỉnh/Thành phố ------</option>
+                                    <option value="0" selected>---- Tỉnh/Thành phố ----</option>
                                     @foreach ($provinces as $province)
                                         <option value="{{ $province->id }}">{{ $province->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div>
-                                <select id="district" style="display: inline-block; height:25px" class="form-select mr-4"
-                                    onchange="selectDistrict(this.value, '{{ url('/checkout/show') }}')">
+                                <select id="district" style="display: inline-block; height:25px; width: 170px"
+                                    class="form-select mr-4"
+                                    onchange="selectDistrict(this.value, '{{ url('/checkout/updateWard') }}')">
                                     <option value="0" selected>------- Quận/Huyện -------</option>
                                     @foreach ($districts as $district)
                                         <option value="{{ $district->id }}">{{ $district->name }}</option>
@@ -54,8 +56,9 @@
                                 </select>
                             </div>
                             <div>
-                                <select id="ward" style="display: inline-block; height:25px" class="form-select">
-                                    <option value="0" selected>------- Phường/Xã -------</option>
+                                <select id="ward" style="display: inline-block; height:25px; width: 170px"
+                                    class="form-select">
+                                    <option value="0" selected>-------- Phường/Xã --------</option>
                                     @foreach ($wards as $ward)
                                         <option value="{{ $ward->id }}">{{ $ward->name }}</option>
                                     @endforeach
