@@ -64,12 +64,14 @@ class UserCheckoutController extends Controller
                 'province' => 'required',
                 'district' => 'required',
                 'ward' => 'required',
+                'phone' => ['required', 'regex:/^(84|0[3|5|7|8|9])+([0-9]{8})$/'],
                 'payment-method' => 'required'
             ],
             [
                 'required' => ':attribute không được để trống',
                 'email' => ':attribute không đúng định dạng',
                 'max' => ':attribute dài nhất :max kí tự',
+                'regex' => ':attribute không đúng định dạng',
             ],
             [
                 'fullname' => 'Họ và tên',
@@ -78,6 +80,7 @@ class UserCheckoutController extends Controller
                 'province' => 'Tỉnh/Thành phố',
                 'district' => 'Quận/Huyện',
                 'ward' => 'Phường/Xã',
+                'phone' => 'Số điện thoại',
                 'payment-method' => 'Hình thức thanh toán'
             ]
         );
@@ -105,6 +108,7 @@ class UserCheckoutController extends Controller
             'order_code' => $orderCode,
             'user_id' => Auth::id(),
             'fullname' => $request->input('fullname'),
+            'phone' => $request->input('phone'),
             'total' => $orderTotal,
             'address' => $address,
             'email' => $request->input('email'),

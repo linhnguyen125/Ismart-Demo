@@ -664,6 +664,7 @@ class ComposerStaticInitd957e230cde8895bc9439b3f61b5d40c
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\SendMailController' => __DIR__ . '/../..' . '/app/Http/Controllers/SendMailController.php',
         'App\\Http\\Controllers\\UserCartController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserCartController.php',
         'App\\Http\\Controllers\\UserCatProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserCatProductController.php',
         'App\\Http\\Controllers\\UserCheckoutController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserCheckoutController.php',

@@ -44,54 +44,24 @@ class AdminOrderController extends Controller
                 'restore' => 'Khôi phục'
             );
 
-            // $orders = Order::onlyTrashed()->where('order_code','like',"%{$keyword}%")->paginate(10);
-            $orders = DB::table('orders')
-                ->join('users', 'users.id', '=', 'orders.user_id')
-                ->where([['order_code', 'like', "%{$keyword}%"], ['users.name', 'like', "%{$keyword}%"]])
-                ->whereNotNull('orders.deleted_at')
-                ->select('orders.id', 'orders.order_code', 'orders.total', 'orders.address', 'orders.status', 'orders.created_at', 'orders.deleted_at', 'orders.updated_at', 'users.name', 'users.phone', 'users.email')
-                ->orderBy('created_at', 'desc')
-                ->paginate(10);
+            $orders = Order::onlyTrashed()->where([['order_code', 'like', "%{$keyword}%"], ['fullname', 'like', "%{$keyword}%"]])
+                ->orderBy('created_at', 'desc')->paginate(15);
         } elseif ($status == '1') {
 
-            // $orders = Order::where('order_code','like',"%{$keyword}%")->where('status','=','1')->paginate(10);
-            $orders = DB::table('orders')
-                ->join('users', 'users.id', '=', 'orders.user_id')
-                ->where([['order_code', 'like', "%{$keyword}%"], ['status', '=', '1'], ['users.name', 'like', "%{$keyword}%"]])
-                ->whereNull('orders.deleted_at')
-                ->select('orders.id', 'orders.order_code', 'orders.total', 'orders.address', 'orders.status', 'orders.created_at', 'orders.deleted_at', 'orders.updated_at', 'users.name', 'users.phone', 'users.email')
-                ->orderBy('created_at', 'desc')
-                ->paginate(10);
+            $orders = Order::where([['order_code', 'like', "%{$keyword}%"], ['fullname', 'like', "%{$keyword}%"], ['status', '=', '1']])
+                ->orderBy('created_at', 'desc')->paginate(15);
         } elseif ($status == '2') {
 
-            // $orders = Order::where('order_code','like',"%{$keyword}%")->where('status','=','2')->paginate(10);
-            $orders = DB::table('orders')
-                ->join('users', 'users.id', '=', 'orders.user_id')
-                ->where([['order_code', 'like', "%{$keyword}%"], ['status', '=', '2'], ['users.name', 'like', "%{$keyword}%"]])
-                ->whereNull('orders.deleted_at')
-                ->select('orders.id', 'orders.order_code', 'orders.total', 'orders.address', 'orders.status', 'orders.created_at', 'orders.deleted_at', 'orders.updated_at', 'users.name', 'users.phone', 'users.email')
-                ->orderBy('created_at', 'desc')
-                ->paginate(10);
+            $orders = Order::where([['order_code', 'like', "%{$keyword}%"], ['fullname', 'like', "%{$keyword}%"], ['status', '=', '2']])
+                ->orderBy('created_at', 'desc')->paginate(15);
         } elseif ($status == '3') {
 
-            // $orders = Order::where('order_code','like',"%{$keyword}%")->where('status','=','3')->paginate(10);
-            $orders = DB::table('orders')
-                ->join('users', 'users.id', '=', 'orders.user_id')
-                ->where([['order_code', 'like', "%{$keyword}%"], ['status', '=', '3'], ['users.name', 'like', "%{$keyword}%"]])
-                ->whereNull('orders.deleted_at')
-                ->select('orders.id', 'orders.order_code', 'orders.total', 'orders.address', 'orders.status', 'orders.created_at', 'orders.deleted_at', 'orders.updated_at', 'users.name', 'users.phone', 'users.email')
-                ->orderBy('created_at', 'desc')
-                ->paginate(10);
+            $orders = Order::where([['order_code', 'like', "%{$keyword}%"], ['fullname', 'like', "%{$keyword}%"], ['status', '=', '3']])
+                ->orderBy('created_at', 'desc')->paginate(15);
         } else {
 
-            // $orders = Order::where('order_code','like',"%{$keyword}%")->orWhere("{$order->name}",'like',"%{$keyword}%")->paginate(10);
-            $orders = DB::table('orders')
-                ->join('users', 'users.id', '=', 'orders.user_id')
-                ->where([['order_code', 'like', "%{$keyword}%"], ['users.name', 'like', "%{$keyword}%"]])
-                ->whereNull('orders.deleted_at')
-                ->select('orders.id', 'orders.order_code', 'orders.total', 'orders.address', 'orders.status', 'orders.created_at', 'orders.deleted_at', 'orders.updated_at', 'users.name', 'users.phone', 'users.email')
-                ->orderBy('created_at', 'desc')
-                ->paginate(10);
+            $orders = Order::where([['order_code', 'like', "%{$keyword}%"], ['fullname', 'like', "%{$keyword}%"]])
+                ->orderBy('created_at', 'desc')->paginate(15);
         }
 
         $count_order_1 = Order::where('status', '=', '1')->count();
@@ -107,6 +77,14 @@ class AdminOrderController extends Controller
     {
         $order = Order::find($id);
         $order->delete();
+
+        return redirect('admin/order/list')->with('status', 'Đã hủy đơn hàng thành công');
+    }
+
+    function forceDelete($id)
+    {
+        $order = Order::find($id);
+        $order->forceDelete;
 
         return redirect('admin/order/list')->with('status', 'Đã xóa đơn hàng thành công');
     }
@@ -153,17 +131,24 @@ class AdminOrderController extends Controller
     function detail($id)
     {
         $order = Order::find($id);
-        // $m = $order->invoice_orders;
-        // foreach($m as $item){
-        //     $n = $item->products;
-        //     foreach($n as $item){
-        //         return $item->title;
-        //     }
-        // }
         $details = $order->invoice_orders;
-        foreach ($details as $item) {
-            $products = $item->products;
-        }
+        // foreach ($details as $item) {
+        //     $products = $item->product;
+        // }
         return view('admin.order.detail', compact('order', 'details'));
+    }
+
+    function store(Request $request, $id)
+    {
+        $status = $request->input('status');
+        if ($status) {
+            Order::where('id', $id)->update([
+                'status' => $status
+            ]);
+
+            return redirect('admin/order/detail/' . $id)->with('status', 'Cập nhật trạng thái thành công');
+        } else {
+            return redirect('admin/order/detail/' . $id)->with('status_err', 'Cập nhật trạng thái thất bại, vui lòng thử lại');
+        }
     }
 }

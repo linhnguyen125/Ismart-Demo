@@ -82,8 +82,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('admin/order/list', 'AdminOrderController@list');
     Route::get('admin/order/detail/{id}', 'AdminOrderController@detail')->name('detail_order');
+    Route::get('admin/order/forceDelete/{id}', 'AdminOrderController@forceDelete')->name('forceDelete_order');
     Route::get('admin/order/delete/{id}', 'AdminOrderController@delete')->name('delete_order');
     Route::post('admin/order/action', 'AdminOrderController@action');
+    Route::post('admin/order/store/{id}', 'AdminOrderController@store')->name('order_store');
 
     //==================== BANNERS =========================
 
