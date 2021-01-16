@@ -20,7 +20,7 @@ class Product extends Model
         return $this->hasMany('App\Thumbnail');
     }
 
-    function invoice_orders(){
-        return $this->belongsToMany('App\Invoice_order');
+    function invoice_order(){
+        return $this->belongsTo('App\Invoice_order');
     }
 }

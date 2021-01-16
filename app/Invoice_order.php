@@ -9,14 +9,15 @@ class Invoice_order extends Model
     //
     protected $table = 'invoice_orders';
 
-    protected $fillable = ['id','order_id','qty','total'];
+    protected $fillable = ['id', 'order_id', 'product_id', 'qty', 'total'];
 
-    function order(){
+    function order()
+    {
         return $this->belongsTo('App\Order');
     }
 
-    function products(){
-        return $this->belongsToMany('App\Product');
+    function product()
+    {
+        return $this->belongsTo('App\Product');
     }
-
 }

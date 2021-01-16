@@ -137,7 +137,9 @@ Route::get('contact', 'UserContactController@contact');
 Route::get('checkout/show', 'UserCheckoutController@show');
 Route::get('checkout/updateDistrict', 'UserCheckoutController@updateDistrict');
 Route::get('checkout/updateWard', 'UserCheckoutController@updateWard');
+Route::get('checkout/order', 'UserCheckoutController@order');
 Route::post('checkout/store', 'UserCheckoutController@store')->name('store_checkout');
+Route::get('mail/orderInfo', 'SendMailController@sendMail');
 
 //=================== FILE MANAGER ======================
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['auth']], function () {
