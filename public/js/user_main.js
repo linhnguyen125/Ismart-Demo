@@ -1,11 +1,11 @@
 // const { update } = require("lodash");
 
 $(function () {
-
+    // hiệu ứng load trang
     $(window).on('load', function (event) {
         $('.load').delay(500).fadeOut('slow');
     });
-
+    // hiển thị slider ảnh detail sản phẩm
     $(function () {
         var get_src;
         // hiển thị hình ảnh mặc định
@@ -20,9 +20,35 @@ $(function () {
         });
     });
 
+    // search ajax
+    $(function () {
+        $("#s").keyup(function () {
+            var keywords = $(this).val();
+            var url = $(this).attr("data-uri");
+            if (keywords != '') {
+                // var _token = $("input[name='_token']").val();
+                $.get(
+                    url,
+                    { keywords: keywords },
+                    function (data) {
+                        $("#search-ajax").fadeIn();
+                        $("#search-ajax").html(data);
+                        console.log(data);
+                    }
+                );
+            } else {
+                $("#search-ajax").fadeOut();
+            }
+        });
+    });
+    // auto complete form search ajax
+    $(document).on('click', '.li-search-ajax', function () {
+        $("#s").val($(this).text());
+        $("#search-ajax").fadeOut();
+    });
 
 });
-
+// update cart ajax
 function updateCart(qty, rowId) {
     var urlUpdate = $(".num-order").attr('data-uri');
     var url = location.href;
@@ -35,7 +61,7 @@ function updateCart(qty, rowId) {
         }
     );
 };
-
+// load quận huyện ajax
 function selectProvince(provinceId, urlUpdate) {
     $.get(
         urlUpdate,
@@ -45,7 +71,7 @@ function selectProvince(provinceId, urlUpdate) {
         }
     );
 };
-
+// load phường xã ajax
 function selectDistrict(districtId, urlUpdate) {
     $.get(
         urlUpdate,

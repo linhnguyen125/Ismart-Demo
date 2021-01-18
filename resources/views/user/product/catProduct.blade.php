@@ -57,11 +57,9 @@
                                             class="product-name text">{{ $product->title }}</a>
                                         <div class="price">
                                             <span class="new">{{ number_format($product->price, 0, '', '.') }}đ</span>
-                                            {{-- <span class="old">20.900.000đ</span>
-                                            --}}
                                         </div>
                                         <div class="action clearfix">
-                                            <a href="?page=cart" title="Thêm giỏ hàng" class="add-cart fl-left"><i
+                                            <a href="{{ route('cart_add', $item->id) }}" title="Thêm giỏ hàng" class="add-cart fl-left"><i
                                                     class="fas fa-cart-plus"></i> Giỏ hàng</a>
                                             <a href="?page=checkout" title="Mua ngay" class="buy-now fl-right">Mua ngay</a>
                                         </div>

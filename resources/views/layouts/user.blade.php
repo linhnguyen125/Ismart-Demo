@@ -87,14 +87,20 @@
                         </div>
                     </div>
                 </div>
-                <div id="head-body" class="clearfix">
+                <div id="head-body" class="clearfix" style="position: relative">
                     <div class="wp-inner">
                         <a href="{{ url('/') }}" title="" id="logo" class="fl-left"><img
                                 src="{{ asset('images/logo.png') }}" /></a>
                         <div id="search-wp" class="fl-left">
-                            <form method="POST" action="">
-                                <input type="text" name="keyword" id="s" placeholder="Nhập từ khóa tìm kiếm tại đây!">
+                            <form method="POST" action="{{ url('/search') }}" autocomplete="off">
+                                @csrf
+                                <input type="text" name="keyword" id="s" value="{{ request()->input('keyword') }}"
+                                    placeholder="Nhập từ khóa tìm kiếm tại đây!"
+                                    data-uri="{{ url('/autocomplete-ajax') }}">
                                 <button type="submit" name="btn-search" value="Tìm kiếm" id="sm-s">Tìm kiếm</button>
+                                <div id="search-ajax" style="position: relative">
+
+                                </div>
                             </form>
                         </div>
                         <div id="action-wp" class="fl-right">

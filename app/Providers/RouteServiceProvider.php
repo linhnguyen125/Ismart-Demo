@@ -23,7 +23,8 @@ class RouteServiceProvider extends ServiceProvider
      */
 
      //============== CHUYỂN HƯỚNG KHI ĐĂNG NHẬP THÀNH CÔNG ==============
-    public const HOME = '/dashboard';
+
+    public const HOME = '/';
 
     /**
      * Define your route model bindings, pattern filters, etc.

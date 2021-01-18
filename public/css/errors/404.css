@@ -23,10 +23,11 @@ body {
 
 a#admin {
     color: yellow;
+    text-decoration: none;
 }
 
 a#admin:hover {
-    color: rgb(34, 212, 203);
+    color: rgb(134, 209, 14);
 }
 
 p,

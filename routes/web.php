@@ -203,6 +203,11 @@ Route::get('checkout/order', 'UserCheckoutController@order');
 Route::post('checkout/store', 'UserCheckoutController@store')->name('store_checkout');
 Route::get('mail/orderInfo', 'SendMailController@sendMail');
 
+//=================== SEARCH ========================
+
+Route::get('autocomplete-ajax', 'UserHomeController@autocomplete');
+Route::post('search', 'UserHomeController@search');
+
 //=================== FILE MANAGER ======================
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();

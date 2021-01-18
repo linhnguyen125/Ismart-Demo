@@ -52,4 +52,34 @@ class UserHomeController extends Controller
         }
         return $list_id;
     }
+
+    function autocomplete(Request $request)
+    {
+        if ($request->keywords) {
+            $products = Product::where('status', '=', '1')->where('title', 'like', '%' . $request->keywords . '%')->get();
+            $data = '<ul class="dropdown-menu" style="display: block;">';
+            foreach ($products as $product) {
+                $data .= '<li class="li-search-ajax"><a href="#">' . $product->title . '</a></li>';
+            }
+            $data .= '</ul>';
+            echo $data;
+        }
+    }
+
+    function search(Request $request)
+    {
+        $list_cat_name_0 = Product_cat::where('parent_id', 0)->get();
+        foreach ($list_cat_name_0 as $item) {
+            $list_child[$item->id] = Product_cat::where('parent_id', $item->id)->get();
+            $count[$item->id] = Product_cat::where('parent_id', $item->id)->count();
+        }
+
+        $keyword = '';
+        if ($request->input('keyword')) {
+            $keyword = htmlspecialchars($request->input('keyword'));
+        }
+        $products = Product::where('title', 'like', "%{$keyword}%")->where('status', '=', '1')->paginate(20);
+
+        return view('user.product.search', compact('products', 'list_cat_name_0', 'list_child', 'count'));
+    }
 }
