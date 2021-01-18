@@ -43,7 +43,7 @@
                                                         </h1>
                                                         <p
                                                             style="margin:4px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px;font-weight:normal">
-                                                            Ismart rất vui thông báo đơn hàng {{ $orderCode }} của quý
+                                                            Ismart rất vui thông báo đơn hàng #{{ $orderCode }} của quý
                                                             khách đã
                                                             được
                                                             tiếp nhận
@@ -53,7 +53,7 @@
                                                             chuẩn bị được giao.</p>
                                                         <h3
                                                             style="font-size:13px;font-weight:bold;color:#f12a43;text-transform:uppercase;margin:20px 0 0 0;border-bottom:1px solid #ddd">
-                                                            Thông tin đơn hàng {{ $orderCode }} <span
+                                                            Thông tin đơn hàng #{{ $orderCode }} <span
                                                                 style="font-size:12px;color:#777;text-transform:none;font-weight:normal">({{ $created_at }})</span>
                                                         </h3>
                                                     </td>

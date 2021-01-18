@@ -106,7 +106,7 @@ class UserCheckoutController extends Controller
 
         Order::create([
             'order_code' => $orderCode,
-            'user_id' => Auth::id(),
+            // 'user_id' => Auth::id(),
             'fullname' => $request->input('fullname'),
             'phone' => $request->input('phone'),
             'total' => $orderTotal,

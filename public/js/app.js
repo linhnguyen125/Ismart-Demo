@@ -24,3 +24,13 @@ $(function () {
         $('.load').delay(500).fadeOut('slow');
     });
 });
+
+function selectModule(roleId, urlUpdate) {
+    $.get(
+        urlUpdate,
+        { roleId: roleId },
+        function (data) {
+            $("#permission").html(data);
+        }
+    );
+}

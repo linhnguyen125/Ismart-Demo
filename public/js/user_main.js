@@ -54,6 +54,8 @@ function selectDistrict(districtId, urlUpdate) {
             $("#ward").html(data);
         }
     );
-}
+};
+
+
 
 

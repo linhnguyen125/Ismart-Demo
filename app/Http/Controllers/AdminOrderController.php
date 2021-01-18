@@ -6,6 +6,7 @@ use App\Invoice_order;
 use App\Order;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use function GuzzleHttp\Promise\all;

@@ -10,12 +10,7 @@ class Order extends Model
     //
     use SoftDeletes;
 
-    protected $fillable = ['id', 'order_code', 'user_id', 'fullname', 'phone', 'total', 'address', 'email', 'status'];
-
-    function user()
-    {
-        return $this->belongsTo('App\User');
-    }
+    protected $fillable = ['id', 'order_code', 'fullname', 'phone', 'total', 'address', 'email', 'status'];
 
     function invoice_orders()
     {
