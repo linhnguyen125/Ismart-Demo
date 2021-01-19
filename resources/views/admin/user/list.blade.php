@@ -28,11 +28,9 @@
             <div class="card-body">
                 <div class="analytic">
                     <a href="{{ request()->fullUrlWithQuery(['status' => 'active']) }}" class="text-primary">Kích hoạt<span
-                            class="text-muted">({{ $count[0] }})</span></a>
+                            class="text-muted">({{ $users->count() }})</span></a>
                     <a href="{{ request()->fullUrlWithQuery(['status' => 'trash']) }}" class="text-primary">Vô hiệu hóa<span
-                            class="text-muted">({{ $count[1] }})</span></a>
-                    {{-- <a href="" class="text-primary">Trạng thái 3<span
-                            class="text-muted">(20)</span></a> --}}
+                            class="text-muted">({{ $count[0] }})</span></a>
                 </div>
                 <form action="{{ url('admin/user/action') }}" method="POST">
                     @csrf
@@ -75,7 +73,17 @@
                                         <td scope="row">{{ $temp }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td>Admintrator</td>
+                                        <td>
+                                            @foreach ($user->roles as $role)
+                                                @php
+                                                if(!empty($role)){
+                                                echo $role->name . "<br>";
+                                                }else {
+                                                echo "Subcriber";
+                                                }
+                                                @endphp
+                                            @endforeach
+                                        </td>
                                         <td>{{ $user->created_at }}</td>
                                         <td>
                                             <a href="{{ route('edit_user', $user->id) }}"
@@ -107,11 +115,9 @@
                                     </td>
                                 </tr>
                             @endif
-
                         </tbody>
                     </table>
                 </form>
-                {{-- PHÂN TRANG --}}
                 {{ $users->links() }}
             </div>
         </div>

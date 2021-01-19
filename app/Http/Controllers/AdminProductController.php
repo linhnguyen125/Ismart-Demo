@@ -71,6 +71,7 @@ class AdminProductController extends Controller
         } else {
             $list_act = array(
                 'delete' => 'Xóa',
+                'over' => 'Cập nhật hết hàng'
             );
             if ($request->input('keyword')) {
                 $keyword = htmlspecialchars($request->input('keyword'));
@@ -117,7 +118,7 @@ class AdminProductController extends Controller
                 if ($act == 'over') {
                     Product::whereIn('id', $list_check)->update(['status' => '0']);
 
-                    return redirect('admin/product/list')->with('status', "Đã chuyển trạng thái sản phẩm thành <b>hết hàng</b>");
+                    return redirect('admin/product/list?status=0')->with('status', "Đã chuyển trạng thái sản phẩm thành <b>hết hàng</b>");
                 }
 
                 // Xóa vĩnh viễn

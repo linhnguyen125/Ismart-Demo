@@ -39,7 +39,7 @@ class AdminUserController extends Controller
                 $keyword = htmlspecialchars($request->input('keyword'));
             }
             $users = User::onlyTrashed()->where('name', 'like', "%{$keyword}%")->orWhere('email', 'like', "%{$keyword}%")
-                ->orderBy('updated_at', 'desc')->paginate(10);
+                ->orderBy('created_at', 'desc')->paginate(10);
         } else {
             $list_act = array(
                 'delete' => 'Xóa'
@@ -48,12 +48,12 @@ class AdminUserController extends Controller
             if ($request->input('keyword')) {
                 $keyword = htmlspecialchars($request->input('keyword'));
             }
-            $users = User::where('name', 'like', "%{$keyword}%")->orWhere('email', 'like', "%{$keyword}%")
-                ->orderBy('updated_at', 'desc')->paginate(10);
+            $users = User::whereNotNull('email_verified_at')->where('name', 'like', "%{$keyword}%")->orWhere('email', 'like', "%{$keyword}%")
+                ->orderBy('created_at', 'desc')->paginate(10);
         }
-        $count_user_active = User::count();
+        // $count_user_active = User::count();
         $count_user_trash = User::onlyTrashed()->count();
-        $count = [$count_user_active, $count_user_trash];
+        $count = [$count_user_trash];
 
         return view('admin.user.list', compact('users', 'count', 'list_act'));
     }
