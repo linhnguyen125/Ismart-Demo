@@ -229,6 +229,7 @@
         </div>
         <div id="btn-top"><img src="{{ asset('images/icon-to-top.png') }}" alt="" /></div>
         <div id="fb-root"></div>
+        @yield('home')
         <script>
             (function(d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];

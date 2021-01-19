@@ -185,7 +185,7 @@ Route::get('{slug}/{id}/{status_id}', 'UserCatProductController@getProductFilter
 //==================== CART ===========================
 Route::get('gio-hang', 'UserCartController@show')->name('cart_show');
 Route::get('gio-hang/them-vao-gio-hang/a/{id}', 'UserCartController@add')->name('cart_add');
-Route::get('cart/remove/{rowId}', 'UserCartController@remove')->name('cart_remove');
+Route::get('gio-hang/xoa-san-pham/remove/{rowId}', 'UserCartController@remove')->name('cart_remove');
 Route::get('xoa-gio-hang', 'UserCartController@destroy')->name('cart_destroy');
 Route::get('cap-nhat-gio-hang', 'UserCartController@update')->name('cart_update');
 Route::get('cart/buy-now/checkout/{productId}', 'UserCartController@buyNow')->name('buy_now');
