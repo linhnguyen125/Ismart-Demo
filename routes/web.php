@@ -178,7 +178,7 @@ Route::get('/', 'UserHomeController@home');
 Route::get('chi-tiet/{slug}/{id}', 'UserProductController@detail')->name('detail_product');
 
 //==================== CAT PRODUCT ====================
-Route::get('{slug}/{id}', 'UserCatProductController@show')->name('cat_product');
+Route::get('danh-muc/{slug}/{id}', 'UserCatProductController@show')->name('cat_product');
 // Route::post('cat/product/action', 'UserCatProductController@action');
 Route::get('{slug}/{id}/{status_id}', 'UserCatProductController@getProductFilterStatus')->name('filter');
 

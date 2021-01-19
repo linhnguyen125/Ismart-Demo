@@ -74,12 +74,18 @@
                                 </li>
                                 @if (Route::has('login'))
                                     @auth
-                                        <li><a href="{{ url('/home') }}">Home</a></li>
+                                        <li><a href="{{ url('/home') }}"
+                                                style="{{ $module_active == 'home' ? 'color: yellow' : '' }}">Home</a>
+                                        </li>
                                     @else
-                                        <li><a href="{{ route('login') }}">Đăng nhập</a></li>
+                                        <li><a href="{{ route('login') }}"
+                                                style="{{ $module_active == 'login' ? 'color: yellow' : '' }}">Đăng nhập</a>
+                                        </li>
 
                                         @if (Route::has('register'))
-                                            <li><a href="{{ route('register') }}">Đăng kí</a></li>
+                                            <li><a href="{{ route('register') }}"
+                                                    style="{{ $module_active == 'register' ? 'color: yellow' : '' }}">Đăng
+                                                    kí</a></li>
                                         @endif
                                     @endauth
                                 @endif

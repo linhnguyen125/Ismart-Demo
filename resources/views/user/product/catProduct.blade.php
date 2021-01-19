@@ -89,7 +89,7 @@
                         <ul class="list-item">
                             @foreach ($list_cat_name_0 as $item)
                                 <li>
-                                    <a href="{{ route('cat_product', [$slug, $item->id]) }}" title="">{{ $item->name }}</a>
+                                    <a href="{{ route('cat_product', [$item->slug, $item->id]) }}" title="">{{ $item->name }}</a>
                                     @if ($count1[$item->id] > 0)
                                         <ul class="sub-menu">
                                             @foreach ($list_child[$item->id] as $child)
