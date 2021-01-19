@@ -15,7 +15,7 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
         $this->middleware(function ($request, $next) {
-            session(['module_active' => 'home']);
+            session(['module_active' => 'user']);
 
             return $next($request);
         });

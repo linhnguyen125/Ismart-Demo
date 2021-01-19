@@ -75,7 +75,7 @@
                                 @if (Route::has('login'))
                                     @auth
                                         <li><a href="{{ url('/home') }}"
-                                                style="{{ $module_active == 'home' ? 'color: yellow' : '' }}">Home</a>
+                                                style="{{ $module_active == 'user' ? 'color: yellow' : '' }}">Home</a>
                                         </li>
                                     @else
                                         <li><a href="{{ route('login') }}"
