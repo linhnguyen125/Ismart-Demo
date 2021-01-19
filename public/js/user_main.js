@@ -26,7 +26,6 @@ $(function () {
             var keywords = $(this).val();
             var url = $(this).attr("data-uri");
             if (keywords != '') {
-                // var _token = $("input[name='_token']").val();
                 $.get(
                     url,
                     { keywords: keywords },

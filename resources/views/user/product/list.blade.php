@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="action clearfix">
                                     <a href="{{ route('cart_add', $item->id) }}" title="Thêm giỏ hàng" class="add-cart fl-left"><i class="fas fa-cart-plus"></i> Giỏ hàng</a>
-                                    <a href="?page=checkout" title="Mua ngay" class="buy-now fl-right">Mua ngay</a>
+                                    <a href="{{ route('buy_now', $item->id) }}" title="Mua ngay" class="buy-now fl-right">Mua ngay</a>
                                 </div>
                                 </li>
                             @endforeach

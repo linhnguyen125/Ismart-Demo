@@ -48,13 +48,13 @@
                                     <tr>
                                         <td style="width: 30px;">{{ $t }}</td>
                                         <td>
-                                            <a href="{{ route('detail_product', $row->id) }}" title="" class="thumb">
+                                            <a href="{{ route('detail_product', [$row->options->slug, $row->id]) }}" title="" class="thumb">
                                                 <img class="img img-fluid" src="{{ asset($row->options->thumbnail) }}"
                                                     alt="">
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="{{ route('detail_product', $row->id) }}" title=""
+                                            <a href="{{ route('detail_product', [$row->options->slug, $row->id]) }}" title=""
                                                 class="name-product">{{ $row->name }}</a>
                                         </td>
                                         <td>{{ number_format($row->price, 0, ',', '.') }}đ</td>
@@ -73,7 +73,7 @@
                                             </div> --}}
 
                                             <input class="num-order" id="num-order_{{ $row->id }}" min="1" name="num-order"
-                                                value="{{ $row->qty }}" type="number" data-uri="{{ url('/cart/update') }}"
+                                                value="{{ $row->qty }}" type="number" data-uri="{{ route('cart_update') }}"
                                                 style="height: 35px; width: 45px;"
                                                 onChange="updateCart(this.value, '{{ $row->rowId }}')">
 
@@ -111,7 +111,7 @@
                                 <td colspan="7">
                                     <div class="clearfix">
                                         <div class="fl-right">
-                                            <a href="{{ url('checkout/show') }}" title="" id="checkout-cart">Thanh toán</a>
+                                            <a href="{{ url('thanh-toan') }}" title="" id="checkout-cart">Thanh toán</a>
                                         </div>
                                     </div>
                                 </td>

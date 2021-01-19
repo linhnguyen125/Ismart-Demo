@@ -22,13 +22,13 @@
                                 <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="slug">Slug</label>
                                 <input class="form-control" type="text" name="slug" value="{{$post_cat->slug}}" data-toggle="tooltip" title="Slug bao gồm chữ cái thường, in hoa, số, kí tự gạch ngang và viết liền không dấu" id="slug">
                                 @error('slug')
                                 <small class="text-danger">{{ $message }}</small>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <label for="">Danh mục cha</label>
                                 <select name="parent_id" class="form-control" id="">

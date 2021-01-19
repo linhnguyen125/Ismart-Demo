@@ -18,7 +18,7 @@ class UserCatProductController extends Controller
         });
     }
 
-    function show(Request $request, $id)
+    function show(Request $request, $slug, $id)
     {
         $select = 0;
         $list_id = $this->get_id($id);
@@ -56,10 +56,10 @@ class UserCatProductController extends Controller
             $count1[$item->id] = Product_cat::where('parent_id', $item->id)->count();
         }
 
-        return view('user.product.catProduct', compact('list_brand', 'list_products', 'cat_name', 'id', 'count', 'list_cat_name_0', 'list_child', 'count1', 'cat_parent'));
+        return view('user.product.catProduct', compact('list_brand', 'list_products', 'cat_name', 'slug', 'id', 'count', 'list_cat_name_0', 'list_child', 'count1', 'cat_parent'));
     } 
 
-    function getProductFilterStatus($id, $status_id)
+    function getProductFilterStatus($slug, $id, $status_id)
     {
         $list_id = $this->get_id($id);
         unset($list_id[0]);
@@ -120,7 +120,7 @@ class UserCatProductController extends Controller
             foreach ($result as $item) { 
                 $output .= '
                 <li>
-                    <a href=" ' . route("detail_product", $item->id) . ' " title="" class="thumb">
+                    <a href=" ' . route("detail_product", [$item->slug, $item->id]) . ' " title="" class="thumb">
                         <img src="' . asset($item->avatar) . '">
                     </a>
                     <a href="?page=detail_product" title=""
@@ -152,6 +152,7 @@ class UserCatProductController extends Controller
             $this->get_id($item->id);
             $list_id[] = $item->id;
         }
+
         return $list_id;
     }
 

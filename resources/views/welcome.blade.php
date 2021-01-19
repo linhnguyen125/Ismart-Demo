@@ -4,19 +4,6 @@
     <div id="main-content-wp" class="home-page clearfix">
         <div class="wp-inner">
             <div class="main-content fl-right">
-                {{-- <div class="section" id="slider-wp">
-                    <div class="section-detail">
-                        <div class="item">
-                            <img src="public/images/slider-01.png" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="public/images/slider-02.png" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="public/images/slider-03.png" alt="">
-                        </div>
-                    </div>
-                </div> --}}
                 @if ($banners->count() > 0)
                     <div class="section" id="slider-wp">
                         <div class="section-detail">
@@ -71,16 +58,17 @@
                 </div>
                 <div class="section" id="feature-product-wp">
                     <div class="section-head">
-                        <h3 class="section-title"><a href="" class="text-dark">Sản phẩm nổi bật</a></h3>
+                        <h3 class="section-title"><a href="" class="text-dark">Sản phẩm mới</a></h3>
                     </div>
                     <div class="section-detail">
                         <ul class="list-item">
                             @foreach ($products as $product)
                                 <li>
-                                    <a href="{{ route('detail_product', $product->id) }}" title="" class="thumb">
+                                    <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
+                                        class="thumb">
                                         <img class="img-fluid" src="{{ asset($product->avatar) }}">
                                     </a>
-                                    <a href="{{ route('detail_product', $product->id) }}" title=""
+                                    <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
                                         class="product-name text">{{ $product->title }}</a>
                                     <div class="price">
                                         <span class="new">{{ number_format($product->price, 0, '', '.') }}đ</span>
@@ -90,7 +78,8 @@
                                     <div class="action clearfix">
                                         <a href="{{ route('cart_add', $product->id) }}" title="" class="add-cart fl-left"><i
                                                 class="fas fa-cart-plus"></i> Giỏ hàng </a>
-                                        <a href="?page=checkout" title="" class="buy-now fl-right">Mua ngay</a>
+                                        <a href="{{ route('buy_now', $product->id) }}" title="" class="buy-now fl-right">Mua
+                                            ngay</a>
                                     </div>
                                 </li>
                             @endforeach
@@ -105,10 +94,11 @@
                         <ul class="list-item clearfix">
                             @foreach ($mobiles as $mobile)
                                 <li>
-                                    <a href="{{ route('detail_product', $mobile->id) }}" title="" class="thumb">
+                                    <a href="{{ route('detail_product', [$mobile->slug, $mobile->id]) }}" title=""
+                                        class="thumb">
                                         <img src="{{ asset($mobile->avatar) }}" class="img-fluid">
                                     </a>
-                                    <a href="{{ route('detail_product', $mobile->id) }}" title=""
+                                    <a href="{{ route('detail_product', [$mobile->slug, $mobile->id]) }}" title=""
                                         class="product-name text">{{ $mobile->title }}</a>
                                     <div class="price">
                                         <span class="new">{{ number_format($mobile->price, 0, '', '.') }}đ</span>
@@ -118,14 +108,16 @@
                                     <div class="action clearfix">
                                         <a href="{{ route('cart_add', $mobile->id) }}" title="Thêm giỏ hàng"
                                             class="add-cart fl-left"><i class="fas fa-cart-plus"></i> Giỏ hàng</a>
-                                        <a href="?page=checkout" title="Mua ngay" class="buy-now fl-right">Mua ngay</a>
+                                        <a href="{{ route('buy_now', $mobile->id) }}" title="Mua ngay"
+                                            class="buy-now fl-right">Mua ngay</a>
                                     </div>
                                 </li>
                             @endforeach
                         </ul>
                     </div>
                 </div>
-                <div class="float-right">{{ $mobiles->links() }}</div>
+                {{-- <div class="float-right">{{ $mobiles->links() }}</div>
+                --}}
                 <div class="section" id="list-product-wp">
                     <div class="section-head">
                         <h3 class="section-title"><a href="" class="text-dark">Laptop</a></h3>
@@ -134,10 +126,11 @@
                         <ul class="list-item clearfix">
                             @foreach ($laptops as $laptop)
                                 <li>
-                                    <a href="{{ route('detail_product', $laptop->id) }}" title="" class="thumb">
+                                    <a href="{{ route('detail_product', [$laptop->slug, $laptop->id]) }}" title=""
+                                        class="thumb">
                                         <img class="img-fluid" src="{{ asset($laptop->avatar) }}">
                                     </a>
-                                    <a href="{{ route('detail_product', $laptop->id) }}" title=""
+                                    <a href="{{ route('detail_product', [$laptop->slug, $laptop->id]) }}" title=""
                                         class="product-name text">{{ $laptop->title }}</a>
                                     <div class="price">
                                         <span class="new">{{ number_format($laptop->price, 0, '', '.') }}đ</span>
@@ -147,14 +140,16 @@
                                     <div class="action clearfix">
                                         <a href="{{ route('cart_add', $laptop->id) }}" title="Thêm giỏ hàng"
                                             class="add-cart fl-left"><i class="fas fa-cart-plus"></i> Giỏ hàng</a>
-                                        <a href="?page=checkout" title="Mua ngay" class="buy-now fl-right">Mua ngay</a>
+                                        <a href="{{ route('buy_now', $laptop->id) }}" title="Mua ngay"
+                                            class="buy-now fl-right">Mua ngay</a>
                                     </div>
                                 </li>
                             @endforeach
                         </ul>
                     </div>
                 </div>
-                <div class="float-right">{{ $laptops->links() }}</div>
+                {{-- <div class="float-right">{{ $laptops->links() }}</div>
+                --}}
             </div>
             {{-- CATEGORY --}}
             <div class="sidebar fl-left">
@@ -166,12 +161,13 @@
                         <ul class="list-item">
                             @foreach ($list_cat_name_0 as $item)
                                 <li>
-                                    <a href="{{ route('cat_product', $item->id) }}" title="">{{ $item->name }}</a>
+                                    <a href="{{ route('cat_product', [$item->slug, $item->id]) }}"
+                                        title="">{{ $item->name }}</a>
                                     @if ($count[$item->id] > 0)
                                         <ul class="sub-menu">
                                             @foreach ($list_child[$item->id] as $child)
                                                 <li>
-                                                    <a href="{{ route('cat_product', $child->id) }}"
+                                                    <a href="{{ route('cat_product', [$child->slug, $child->id]) }}"
                                                         title="">{{ $child->name }}</a>
                                                 </li>
                                             @endforeach
@@ -189,110 +185,26 @@
                     </div>
                     <div class="section-detail">
                         <ul class="list-item">
-                            <li class="clearfix">
-                                <a href="?page=detail_product" title="" class="thumb fl-left">
-                                    <img src="public/images/img-pro-13.png" alt="">
-                                </a>
-                                <div class="info fl-right">
-                                    <a href="?page=detail_product" title="" class="product-name">Laptop Asus A540UP I5</a>
-                                    <div class="price">
-                                        <span class="new">5.190.000đ</span>
-                                        <span class="old">7.190.000đ</span>
-                                    </div>
-                                    <a href="" title="" class="buy-now">Mua ngay</a>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href="?page=detail_product" title="" class="thumb fl-left">
-                                    <img src="public/images/img-pro-11.png" alt="">
-                                </a>
-                                <div class="info fl-right">
-                                    <a href="?page=detail_product" title="" class="product-name">Iphone X Plus</a>
-                                    <div class="price">
-                                        <span class="new">15.190.000đ</span>
-                                        <span class="old">17.190.000đ</span>
-                                    </div>
-                                    <a href="" title="" class="buy-now">Mua ngay</a>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href="?page=detail_product" title="" class="thumb fl-left">
-                                    <img src="public/images/img-pro-12.png" alt="">
-                                </a>
-                                <div class="info fl-right">
-                                    <a href="?page=detail_product" title="" class="product-name">Iphone X Plus</a>
-                                    <div class="price">
-                                        <span class="new">15.190.000đ</span>
-                                        <span class="old">17.190.000đ</span>
-                                    </div>
-                                    <a href="" title="" class="buy-now">Mua ngay</a>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href="?page=detail_product" title="" class="thumb fl-left">
-                                    <img src="public/images/img-pro-05.png" alt="">
-                                </a>
-                                <div class="info fl-right">
-                                    <a href="?page=detail_product" title="" class="product-name">Iphone X Plus</a>
-                                    <div class="price">
-                                        <span class="new">15.190.000đ</span>
-                                        <span class="old">17.190.000đ</span>
-                                    </div>
-                                    <a href="" title="" class="buy-now">Mua ngay</a>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href="?page=detail_product" title="" class="thumb fl-left">
-                                    <img src="public/images/img-pro-22.png" alt="">
-                                </a>
-                                <div class="info fl-right">
-                                    <a href="?page=detail_product" title="" class="product-name">Iphone X Plus</a>
-                                    <div class="price">
-                                        <span class="new">15.190.000đ</span>
-                                        <span class="old">17.190.000đ</span>
-                                    </div>
-                                    <a href="" title="" class="buy-now">Mua ngay</a>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href="?page=detail_product" title="" class="thumb fl-left">
-                                    <img src="public/images/img-pro-23.png" alt="">
-                                </a>
-                                <div class="info fl-right">
-                                    <a href="?page=detail_product" title="" class="product-name">Iphone X Plus</a>
-                                    <div class="price">
-                                        <span class="new">15.190.000đ</span>
-                                        <span class="old">17.190.000đ</span>
-                                    </div>
-                                    <a href="" title="" class="buy-now">Mua ngay</a>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href="?page=detail_product" title="" class="thumb fl-left">
-                                    <img src="public/images/img-pro-18.png" alt="">
-                                </a>
-                                <div class="info fl-right">
-                                    <a href="?page=detail_product" title="" class="product-name">Iphone X Plus</a>
-                                    <div class="price">
-                                        <span class="new">15.190.000đ</span>
-                                        <span class="old">17.190.000đ</span>
-                                    </div>
-                                    <a href="" title="" class="buy-now">Mua ngay</a>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href="?page=detail_product" title="" class="thumb fl-left">
-                                    <img src="public/images/img-pro-15.png" alt="">
-                                </a>
-                                <div class="info fl-right">
-                                    <a href="?page=detail_product" title="" class="product-name">Iphone X Plus</a>
-                                    <div class="price">
-                                        <span class="new">15.190.000đ</span>
-                                        <span class="old">17.190.000đ</span>
-                                    </div>
-                                    <a href="" title="" class="buy-now">Mua ngay</a>
-                                </div>
-                            </li>
+                            @if ($bestSellingProducts->count() > 0)
+                                @foreach ($bestSellingProducts as $product)
+                                    <li class="clearfix">
+                                        <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
+                                            class="thumb fl-left">
+                                            <img src="{{ asset($product->avatar) }}" alt="">
+                                        </a>
+                                        <div class="info fl-right">
+                                            <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
+                                                class="product-name">{{ $product->title }}</a>
+                                            <div class="price">
+                                                <span class="new">{{ number_format($product->price, 0, '', '.') }}đ</span>
+                                            </div>
+                                            <a href="{{ route('buy_now', $product->id) }}" title="" class="buy-now">Mua
+                                                ngay</a>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            @endif
+
                         </ul>
                     </div>
                 </div>

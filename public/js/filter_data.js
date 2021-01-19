@@ -17,6 +17,7 @@ $(document).ready(function () {
             data: { action: action, minimum_price: minimum_price, maximum_price: maximum_price, brand: brand, status: status },
             type: Text,
             success: function (data) {
+                $("#list_products").fadeIn(1000);
                 $("#list_products").html(data);
             }
         });

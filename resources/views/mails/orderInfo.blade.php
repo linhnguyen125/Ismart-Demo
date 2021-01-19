@@ -77,16 +77,14 @@
                                                                     <td style="padding:3px 9px 9px 9px;border-top:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px;font-weight:normal"
                                                                         valign="top"><span
                                                                             style="text-transform:capitalize">{{ $fullname }}</span><br>
-                                                                        <a href="mailto:phuongnguyenfbe54@gmail.com"
-                                                                            rel="noreferrer"
+                                                                        <a href="mailto:{{ $email }}" rel="noreferrer"
                                                                             target="_blank">{{ $email }}</a><br>
                                                                         {{ $phone }}
                                                                     </td>
                                                                     <td style="padding:3px 9px 9px 9px;border-top:0;border-left:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px;font-weight:normal"
                                                                         valign="top"><span
                                                                             style="text-transform:capitalize">{{ $fullname }}</span><br>
-                                                                        <a href="mailto:phuongnguyenfbe54@gmail.com"
-                                                                            rel="noreferrer"
+                                                                        <a href="mailto:{{ $email }}" rel="noreferrer"
                                                                             target="_blank">{{ $email }}</a><br>
                                                                         {{ $address }}<br>
                                                                         Tel: {{ $phone }}
@@ -254,10 +252,10 @@
                                                         <p
                                                             style="margin:10px 0 0 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px;font-weight:normal">
                                                             Bạn cần được hỗ trợ ngay? Chỉ cần email <a
-                                                                href="mailto:linhnguyennd125@gmail.com"
+                                                                href="mailto:hethongcntt.unitop@gmail.com"
                                                                 style="color:#099202;text-decoration:none"
                                                                 rel="noreferrer" target="_blank">
-                                                                <strong>linhnguyennd125@gmail.com</strong> </a>, hoặc
+                                                                <strong>hethongcntt.unitop@gmail.com</strong> </a>, hoặc
                                                             gọi số điện
                                                             thoại <strong style="color:#099202">0981-958-120</strong>
                                                             (8-21h cả

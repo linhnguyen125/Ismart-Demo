@@ -27,26 +27,48 @@ class UserCartController extends Controller
             'name' => $product->title,
             'qty' => 1,
             'price' => $product->price,
-            'options' => ['thumbnail' => $product->avatar]
+            'options' => [
+                'thumbnail' => $product->avatar,
+                'slug' => $product->slug
+            ]
         ]);
 
-        return redirect('cart/show')->with('status', 'Đã thêm sản phẩm vào giỏ hàng');
+        return redirect('gio-hang')->with('status', 'Đã thêm sản phẩm vào giỏ hàng');
     }
 
     function remove($rowId)
     {
         Cart::remove($rowId);
-        return redirect('cart/show')->with('status', 'Đã xóa sản phẩm khỏi giỏ hàng');
+        return redirect('gio-hang')->with('status', 'Đã xóa sản phẩm khỏi giỏ hàng');
     }
 
     function destroy()
     {
         Cart::destroy();
-        return redirect('cart/show')->with('status', 'Đã xóa giỏ hàng');
+        return redirect('gio-hang')->with('status', 'Đã xóa giỏ hàng');
     }
 
     function update(Request $request)
     {
         Cart::update($request->rowId, $request->qty);
+    }
+
+    function buyNow($productId)
+    {
+        $product = Product::find($productId);
+        // $product_code = Str::upper('UNI - ' . Str::random(8));
+
+        Cart::add([
+            'id' => $product->id,
+            'name' => $product->title,
+            'qty' => 1,
+            'price' => $product->price,
+            'options' => [
+                'thumbnail' => $product->avatar,
+                'slug' => $product->slug
+            ]
+        ]);
+
+        return redirect('thanh-toan');
     }
 }

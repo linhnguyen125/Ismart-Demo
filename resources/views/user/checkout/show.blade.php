@@ -51,7 +51,7 @@
                             <div>
                                 <select id="province" name="province"
                                     style="display: inline-block; height:25px; width: 170px" class="form-select mr-4"
-                                    onchange="selectProvince(this.value, '{{ url('/checkout/updateDistrict') }}')">
+                                    onchange="selectProvince(this.value, '{{ route('update_District') }}')">
                                     <option value="" selected>---- Tỉnh/Thành phố ----</option>
                                     @foreach ($provinces as $province)
                                         <option value="{{ $province->id }}">{{ $province->name }}</option>
@@ -64,7 +64,7 @@
                             <div>
                                 <select id="district" name="district"
                                     style="display: inline-block; height:25px; width: 170px" class="form-select mr-4"
-                                    onchange="selectDistrict(this.value, '{{ url('/checkout/updateWard') }}')">
+                                    onchange="selectDistrict(this.value, '{{ route('update_Ward') }}')">
                                     <option value="" selected>------- Quận/Huyện -------</option>
                                 </select>
                                 @error('district')

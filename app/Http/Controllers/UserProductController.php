@@ -33,7 +33,7 @@ class UserProductController extends Controller
         return $list_id;
     }
 
-    function detail($id)
+    function detail($slug, $id)
     {
         $list_cat_name_0 = Product_cat::where('parent_id', 0)->get();
 

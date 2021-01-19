@@ -1,4 +1,4 @@
-@extends('layouts.user') 
+@extends('layouts.user')
 
 @section('content')
     <div id="main-content-wp" class="clearfix category-product-page">
@@ -11,11 +11,12 @@
                         </li>
                         @if (!empty($cat_parent))
                             <li>
-                                <a href="{{ route('cat_product', $cat_parent->id) }}" title="">{{ $cat_parent->name }}</a>
+                                <a href="{{ route('cat_product', [$cat_parent->slug, $cat_parent->id]) }}"
+                                    title="">{{ $cat_parent->name }}</a>
                             </li>
                         @endif
                         <li>
-                            <a href="{{ route('cat_product', $id) }}" title="">{{ $cat_name }}</a>
+                            <a href="{{ route('cat_product', [$slug, $id]) }}" title="">{{ $cat_name }}</a>
                         </li>
                     </ul>
                 </div>
@@ -50,18 +51,20 @@
                             @else
                                 @foreach ($list_products as $product)
                                     <li>
-                                        <a href="{{ route('detail_product', $product->id) }}" title="" class="thumb">
+                                        <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
+                                            class="thumb">
                                             <img src="{{ asset($product->avatar) }}">
                                         </a>
-                                        <a href="?page=detail_product" title=""
+                                        <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
                                             class="product-name text">{{ $product->title }}</a>
                                         <div class="price">
                                             <span class="new">{{ number_format($product->price, 0, '', '.') }}đ</span>
                                         </div>
                                         <div class="action clearfix">
-                                            <a href="{{ route('cart_add', $item->id) }}" title="Thêm giỏ hàng" class="add-cart fl-left"><i
-                                                    class="fas fa-cart-plus"></i> Giỏ hàng</a>
-                                            <a href="?page=checkout" title="Mua ngay" class="buy-now fl-right">Mua ngay</a>
+                                            <a href="{{ route('cart_add', $product->id) }}" title="Thêm giỏ hàng"
+                                                class="add-cart fl-left"><i class="fas fa-cart-plus"></i> Giỏ hàng</a>
+                                            <a href="{{ route('buy_now', $product->id) }}" title="Mua ngay"
+                                                class="buy-now fl-right">Mua ngay</a>
                                         </div>
                                     </li>
                                 @endforeach
@@ -86,12 +89,12 @@
                         <ul class="list-item">
                             @foreach ($list_cat_name_0 as $item)
                                 <li>
-                                    <a href="{{ route('cat_product', $item->id) }}" title="">{{ $item->name }}</a>
+                                    <a href="{{ route('cat_product', [$slug, $item->id]) }}" title="">{{ $item->name }}</a>
                                     @if ($count1[$item->id] > 0)
                                         <ul class="sub-menu">
                                             @foreach ($list_child[$item->id] as $child)
                                                 <li>
-                                                    <a href="{{ route('cat_product', $child->id) }}"
+                                                    <a href="{{ route('cat_product', [$child->slug, $child->id]) }}"
                                                         title="">{{ $child->name }}</a>
                                                 </li>
                                             @endforeach
@@ -107,7 +110,7 @@
                         <h3 class="section-title">Bộ lọc</h3>
                     </div>
                     <div class="section-detail">
-                        
+
                         <table>
                             <thead>
                                 <tr>
@@ -120,31 +123,34 @@
                                         <input type="hidden" id="hidden_minimum_price" value="0">
                                         <input type="hidden" id="hidden_maximum_price" value="100000000">
                                     </td>
-                                    <tr>
-                                        <td><p id="price_show">Từ 500000 - 100000000</p>
-                                        <div id="price_range"></div></td>
-                                    </tr>
-                                </tr>
-                            </tbody>
-                        </table>
-                        
-                        @if (count($list_brand)>0)
-                        <table>
-                            <thead>
                                 <tr>
-                                    <td colspan="2">Hãng</td>
+                                    <td>
+                                        <p id="price_show">Từ 500000 - 100000000</p>
+                                        <div id="price_range"></div>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($list_brand as $item)
-                                    <tr>
-                                        <td><input type="checkbox" class="common_selector brand" value="{{ $item->id }}">
-                                        </td>
-                                        <td>{{ $item->name }}</td>
-                                    </tr>
-                                @endforeach
+                                </tr>
                             </tbody>
                         </table>
+
+                        @if (count($list_brand) > 0)
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td colspan="2">Hãng</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($list_brand as $item)
+                                        <tr>
+                                            <td><input type="checkbox" class="common_selector brand"
+                                                    value="{{ $item->id }}">
+                                            </td>
+                                            <td>{{ $item->name }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         @endif
                     </div>
                 </div>

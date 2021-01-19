@@ -7,7 +7,7 @@ use App\Product_cat;
 use App\Thumbnail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class AdminProductController extends Controller
 {
@@ -187,6 +187,7 @@ class AdminProductController extends Controller
 
             Product::create([
                 'title' => $request->input('title'),
+                'slug' => SlugService::createSlug(Product::class, 'slug', $request->title),
                 'content' => $request->input('content'),
                 'user_id' => Auth::id(),
                 'product_cat_id' => $request->input('product_cat'),
@@ -266,6 +267,7 @@ class AdminProductController extends Controller
 
         Product::where('id', $id)->update([
             'title' => $request->input('title'),
+            'slug' => SlugService::createSlug(Product::class, 'slug', $request->title),
             'content' => $request->input('content'),
             'user_id' => Auth::id(),
             'product_cat_id' => $request->input('product_cat'),
@@ -309,25 +311,25 @@ class AdminProductController extends Controller
             [
                 'name' => 'required|string|max:255',
                 'parent_id' => 'required',
-                'slug' => 'required|regex:/^[A-Za-z0-9-]+$/|max:255'
+                // 'slug' => 'required|regex:/^[A-Za-z0-9-]+$/|max:255'
             ],
             [
                 'required' => ':attribute không được để trống',
                 'max' => ':attribute có độ dài lớn nhất :max kí tự',
-                'regex' => ':attribute không đúng định dạng',
+                // 'regex' => ':attribute không đúng định dạng',
             ],
             [
                 'name' => 'Tên danh mục',
                 'parent_id' => 'Danh mục cha',
-                'slug' => 'Slug',
+                // 'slug' => 'Slug',
             ]
         );
 
         Product_cat::create([
             'name' => $request->input('name'),
+            'slug' => SlugService::createSlug(Product_cat::class, 'slug', $request->name),
             'parent_id' => $request->input('parent_id'),
             'user_id' => Auth::id(),
-            'slug' => $request->input('slug'),
         ]);
 
         return redirect('admin/product/cat/list')->with('status', 'Thêm danh mục thành công');
@@ -369,25 +371,25 @@ class AdminProductController extends Controller
             [
                 'name' => 'required|string|max:255',
                 'parent_id' => 'required',
-                'slug' => 'required|regex:/^[A-Za-z0-9-]+$/|max:255'
+                // 'slug' => 'required|regex:/^[A-Za-z0-9-]+$/|max:255'
             ],
             [
                 'required' => ':attribute không được để trống',
                 'max' => ':attribute có độ dài lớn nhất :max kí tự',
-                'regex' => ':attribute không đúng định dạng',
+                // 'regex' => ':attribute không đúng định dạng',
             ],
             [
                 'name' => 'Tên danh mục',
                 'parent_id' => 'Danh mục cha',
-                'slug' => 'Slug',
+                // 'slug' => 'Slug',
             ]
         );
 
         Product_cat::where('id', $id)->update([
             'name' => $request->input('name'),
+            'slug' => SlugService::createSlug(Product_cat::class, 'slug', $request->name),
             'parent_id' => $request->input('parent_id'),
             'user_id' => Auth::id(),
-            'slug' => $request->input('slug'),
         ]);
 
         return redirect('admin/product/cat/list')->with('status', 'Cập nhật thông tin thành công');

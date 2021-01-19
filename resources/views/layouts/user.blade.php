@@ -59,7 +59,7 @@
                                         chủ</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('page/blog') }}"
+                                    <a href="{{ url('blog') }}"
                                         style="{{ $module_active == 'blog' ? 'color: yellow' : '' }}" title="">Blog</a>
                                 </li>
                                 <li>
@@ -92,11 +92,11 @@
                         <a href="{{ url('/') }}" title="" id="logo" class="fl-left"><img
                                 src="{{ asset('images/logo.png') }}" /></a>
                         <div id="search-wp" class="fl-left">
-                            <form method="POST" action="{{ url('/search') }}" autocomplete="off">
+                            <form method="POST" action="{{ url('tim-kiem/san-pham') }}" autocomplete="off">
                                 @csrf
                                 <input type="text" name="keyword" id="s" value="{{ request()->input('keyword') }}"
                                     placeholder="Nhập từ khóa tìm kiếm tại đây!"
-                                    data-uri="{{ url('/autocomplete-ajax') }}">
+                                    data-uri="{{ route('autocomplete-ajax') }}">
                                 <button type="submit" name="btn-search" value="Tìm kiếm" id="sm-s">Tìm kiếm</button>
                                 <div id="search-ajax" style="position: relative">
 
@@ -126,14 +126,14 @@
                                         @foreach (Cart::content() as $row)
                                             <ul class="list-cart">
                                                 <li class="clearfix">
-                                                    <a href="{{ route('detail_product', $row->id) }}" title=""
-                                                        class="thumb fl-left">
+                                                    <a href="{{ route('detail_product', [$row->options->slug, $row->id]) }}"
+                                                        title="" class="thumb fl-left">
                                                         <img class="img-fluid"
                                                             src="{{ asset($row->options->thumbnail) }}" alt="">
                                                     </a>
                                                     <div class="info fl-right">
-                                                        <a href="{{ route('detail_product', $row->id) }}" title=""
-                                                            class="product-name">{{ $row->name }}</a>
+                                                        <a href="{{ route('detail_product', [$row->options->slug, $row->id]) }}"
+                                                            title="" class="product-name">{{ $row->name }}</a>
                                                         <p class="price">{{ number_format($row->total, 0, ',', '.') }}đ
                                                         </p>
                                                         <p class="qty">Số lượng: <span>{{ $row->qty }}</span></p>
@@ -149,7 +149,7 @@
                                     <div class="action-cart clearfix">
                                         <a href="{{ route('cart_show') }}" title="Giỏ hàng"
                                             class="view-cart fl-left">Giỏ hàng</a>
-                                        <a href="{{ url('checkout/show') }}" title="Thanh toán"
+                                        <a href="{{ url('thanh-toan') }}" title="Thanh toán"
                                             class="checkout fl-right">Thanh
                                             toán</a>
                                     </div>
@@ -184,10 +184,10 @@
                                     <p>106 - Trần Bình - Cầu Giấy - Hà Nội</p>
                                 </li>
                                 <li>
-                                    <p>0987.654.321 - 0989.989.989</p>
+                                    <p>098.195.8120 - 035.853.0282</p>
                                 </li>
                                 <li>
-                                    <p>vshop@gmail.com</p>
+                                    <p>hethongcntt.unitop@gmail.com</p>
                                 </li>
                             </ul>
                         </div>
@@ -195,16 +195,16 @@
                             <h3 class="title">Chính sách mua hàng</h3>
                             <ul class="list-item">
                                 <li>
-                                    <a href="" title="">Quy định - chính sách</a>
+                                    <a href="#" title="">Quy định - chính sách</a>
                                 </li>
                                 <li>
-                                    <a href="" title="">Chính sách bảo hành - đổi trả</a>
+                                    <a href="#" title="">Chính sách bảo hành - đổi trả</a>
                                 </li>
                                 <li>
-                                    <a href="" title="">Chính sách hội viện</a>
+                                    <a href="#" title="">Chính sách hội viện</a>
                                 </li>
                                 <li>
-                                    <a href="" title="">Giao hàng - lắp đặt</a>
+                                    <a href="#" title="">Giao hàng - lắp đặt</a>
                                 </li>
                             </ul>
                         </div>

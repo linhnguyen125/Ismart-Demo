@@ -25,11 +25,11 @@
                             <ul class="list-item">
                                 @foreach ($posts as $post)
                                     <li class="clearfix">
-                                        <a href="{{ route('detail_blog', $post->id) }}" title="" class="thumb fl-left">
+                                        <a href="{{ route('detail_blog', [$post->slug, $post->id]) }}" title="" class="thumb fl-left">
                                             <img class="img-fluid" src="{{ asset($post->thumbnail) }}" alt="blog">
                                         </a>
                                         <div class="info fl-right">
-                                            <a href="{{ route('detail_blog', $post->id) }}" title=""
+                                            <a href="{{ route('detail_blog', [$post->slug, $post->id]) }}" title=""
                                                 class="title">{{ $post->title }}</a>
                                             <span class="create-date">{{ $post->created_at }}</span>
                                             <div class="desc">{!! $post->content !!}</div>
@@ -53,110 +53,26 @@
                     </div>
                     <div class="section-detail">
                         <ul class="list-item">
-                            <li class="clearfix">
-                                <a href="?page=detail_product" title="" class="thumb fl-left">
-                                    <img src="{{ asset('images/img-pro-13.png') }}" alt="">
-                                </a>
-                                <div class="info fl-right">
-                                    <a href="?page=detail_product" title="" class="product-name">Laptop Asus A540UP I5</a>
-                                    <div class="price">
-                                        <span class="new">5.190.000đ</span>
-                                        <span class="old">7.190.000đ</span>
-                                    </div>
-                                    <a href="" title="" class="buy-now">Mua ngay</a>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href="?page=detail_product" title="" class="thumb fl-left">
-                                    <img src="{{ asset('images/img-pro-11.png') }}" alt="">
-                                </a>
-                                <div class="info fl-right">
-                                    <a href="?page=detail_product" title="" class="product-name">Iphone X Plus</a>
-                                    <div class="price">
-                                        <span class="new">15.190.000đ</span>
-                                        <span class="old">17.190.000đ</span>
-                                    </div>
-                                    <a href="" title="" class="buy-now">Mua ngay</a>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href="?page=detail_product" title="" class="thumb fl-left">
-                                    <img src="{{ asset('images/img-pro-12.png') }}" alt="">
-                                </a>
-                                <div class="info fl-right">
-                                    <a href="?page=detail_product" title="" class="product-name">Iphone X Plus</a>
-                                    <div class="price">
-                                        <span class="new">15.190.000đ</span>
-                                        <span class="old">17.190.000đ</span>
-                                    </div>
-                                    <a href="" title="" class="buy-now">Mua ngay</a>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href="?page=detail_product" title="" class="thumb fl-left">
-                                    <img src="{{ asset('images/img-pro-05.png') }}" alt="">
-                                </a>
-                                <div class="info fl-right">
-                                    <a href="?page=detail_product" title="" class="product-name">Iphone X Plus</a>
-                                    <div class="price">
-                                        <span class="new">15.190.000đ</span>
-                                        <span class="old">17.190.000đ</span>
-                                    </div>
-                                    <a href="" title="" class="buy-now">Mua ngay</a>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href="?page=detail_product" title="" class="thumb fl-left">
-                                    <img src="{{ asset('images/img-pro-22.png') }}" alt="">
-                                </a>
-                                <div class="info fl-right">
-                                    <a href="?page=detail_product" title="" class="product-name">Iphone X Plus</a>
-                                    <div class="price">
-                                        <span class="new">15.190.000đ</span>
-                                        <span class="old">17.190.000đ</span>
-                                    </div>
-                                    <a href="" title="" class="buy-now">Mua ngay</a>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href="?page=detail_product" title="" class="thumb fl-left">
-                                    <img src="{{ asset('images/img-pro-23.png') }}" alt="">
-                                </a>
-                                <div class="info fl-right">
-                                    <a href="?page=detail_product" title="" class="product-name">Iphone X Plus</a>
-                                    <div class="price">
-                                        <span class="new">15.190.000đ</span>
-                                        <span class="old">17.190.000đ</span>
-                                    </div>
-                                    <a href="" title="" class="buy-now">Mua ngay</a>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href="?page=detail_product" title="" class="thumb fl-left">
-                                    <img src="{{ asset('images/img-pro-18.png') }}" alt="">
-                                </a>
-                                <div class="info fl-right">
-                                    <a href="?page=detail_product" title="" class="product-name">Iphone X Plus</a>
-                                    <div class="price">
-                                        <span class="new">15.190.000đ</span>
-                                        <span class="old">17.190.000đ</span>
-                                    </div>
-                                    <a href="" title="" class="buy-now">Mua ngay</a>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href="?page=detail_product" title="" class="thumb fl-left">
-                                    <img src="{{ asset('images/img-pro-15.png') }}" alt="">
-                                </a>
-                                <div class="info fl-right">
-                                    <a href="?page=detail_product" title="" class="product-name">Iphone X Plus</a>
-                                    <div class="price">
-                                        <span class="new">15.190.000đ</span>
-                                        <span class="old">17.190.000đ</span>
-                                    </div>
-                                    <a href="" title="" class="buy-now">Mua ngay</a>
-                                </div>
-                            </li>
+                            @if ($bestSellingProducts->count() > 0)
+                                @foreach ($bestSellingProducts as $product)
+                                    <li class="clearfix">
+                                        <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
+                                            class="thumb fl-left">
+                                            <img src="{{ asset($product->avatar) }}" alt="">
+                                        </a>
+                                        <div class="info fl-right">
+                                            <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
+                                                class="product-name">{{ $product->title }}</a>
+                                            <div class="price">
+                                                <span class="new">{{ number_format($product->price, 0, '', '.') }}đ</span>
+                                            </div>
+                                            <a href="{{ route('buy_now', $product->id) }}" title="" class="buy-now">Mua
+                                                ngay</a>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            @endif
+
                         </ul>
                     </div>
                 </div>
