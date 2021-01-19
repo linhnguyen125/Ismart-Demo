@@ -84,8 +84,8 @@ class AdminOrderController extends Controller
 
     function forceDelete($id)
     {
-        $order = Order::find($id);
-        $order->forceDelete;
+        $order = Order::onlyTrashed()->where('id',$id);
+        $order->forceDelete();
 
         return redirect('admin/order/list')->with('status', 'Đã xóa đơn hàng thành công');
     }
