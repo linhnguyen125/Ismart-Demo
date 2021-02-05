@@ -33,19 +33,19 @@ class UserCartController extends Controller
             ]
         ]);
 
-        return redirect('gio-hang')->with('status', 'Đã thêm sản phẩm vào giỏ hàng');
+        return redirect('cart/show')->with('status', 'Đã thêm sản phẩm vào giỏ hàng');
     }
 
     function remove($rowId)
     {
         Cart::remove($rowId);
-        return redirect('gio-hang')->with('status', 'Đã xóa sản phẩm khỏi giỏ hàng');
+        return redirect('cart/show')->with('status', 'Đã xóa sản phẩm khỏi giỏ hàng');
     }
 
     function destroy()
     {
         Cart::destroy();
-        return redirect('gio-hang')->with('status', 'Đã xóa giỏ hàng');
+        return redirect('cart/show')->with('status', 'Đã xóa giỏ hàng');
     }
 
     function update(Request $request)
@@ -69,6 +69,6 @@ class UserCartController extends Controller
             ]
         ]);
 
-        return redirect('thanh-toan');
+        return redirect('checkout/show');
     }
 }

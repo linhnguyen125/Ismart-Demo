@@ -166,8 +166,8 @@ Route::middleware(['auth', 'verified', 'checkRole:21'])->group(function () {
 
 //=================== PAGE =======================
 
-Route::get('blog', 'UserPageController@blog');
-Route::get('blog/{slug}/{id}', 'UserPageController@detail_blog')->name('detail_blog');
+Route::get('page/blog', 'UserPageController@blog');
+Route::get('page/blog/detail/{id}', 'UserPageController@detail_blog')->name('detail_blog');
 
 //==================== HOME ======================
 
@@ -175,20 +175,20 @@ Route::get('/', 'UserHomeController@home');
 
 //==================== PRODUCT ====================
 
-Route::get('chi-tiet/{slug}/{id}', 'UserProductController@detail')->name('detail_product');
+Route::get('product/detail/{id}', 'UserProductController@detail')->name('detail_product');
 
 //==================== CAT PRODUCT ====================
-Route::get('danh-muc/{slug}/{id}', 'UserCatProductController@show')->name('cat_product');
-// Route::post('cat/product/action', 'UserCatProductController@action');
-Route::get('{slug}/{id}/{status_id}', 'UserCatProductController@getProductFilterStatus')->name('filter');
+Route::get('cat/product/{id}', 'UserCatProductController@show')->name('cat_product');
+Route::post('cat/product/action', 'UserCatProductController@action');
+Route::get('cat/product/{id}/{status_id}', 'UserCatProductController@getProductFilterStatus')->name('filter');
 
 //==================== CART ===========================
-Route::get('gio-hang', 'UserCartController@show')->name('cart_show');
-Route::get('gio-hang/them-vao-gio-hang/a/{id}', 'UserCartController@add')->name('cart_add');
-Route::get('gio-hang/xoa-san-pham/remove/{rowId}', 'UserCartController@remove')->name('cart_remove');
-Route::get('xoa-gio-hang', 'UserCartController@destroy')->name('cart_destroy');
-Route::get('cap-nhat-gio-hang', 'UserCartController@update')->name('cart_update');
-Route::get('cart/buy-now/checkout/{productId}', 'UserCartController@buyNow')->name('buy_now');
+Route::get('cart/show', 'UserCartController@show')->name('cart_show');
+Route::get('cart/add/{id}', 'UserCartController@add')->name('cart_add');
+Route::get('cart/remove/{rowId}', 'UserCartController@remove')->name('cart_remove');
+Route::get('cart/destroy', 'UserCartController@destroy')->name('cart_destroy');
+Route::get('cart/update', 'UserCartController@update')->name('cart_update');;
+Route::get('cart/checkout/{productId}', 'UserCartController@buyNow')->name('buy_now');
 
 //==================== INTRODUCE =====================
 Route::get('introduce', 'UserIntroduceController@introduce');
@@ -197,9 +197,9 @@ Route::get('introduce', 'UserIntroduceController@introduce');
 Route::get('contact', 'UserContactController@contact');
 
 //==================== CHECKOUT =====================
-Route::get('thanh-toan', 'UserCheckoutController@show');
-Route::get('checkout/auto-load/district/ajax', 'UserCheckoutController@updateDistrict')->name('update_District');
-Route::get('checkout/auto-load/ward/ajax', 'UserCheckoutController@updateWard')->name('update_Ward');
+Route::get('checkout/show', 'UserCheckoutController@show');
+Route::get('checkout/updateDistrict', 'UserCheckoutController@updateDistrict')->name('update_District');
+Route::get('checkout/updateWard', 'UserCheckoutController@updateWard')->name('update_Ward');
 Route::get('checkout/order', 'UserCheckoutController@order');
 Route::post('checkout/store', 'UserCheckoutController@store')->name('store_checkout');
 Route::get('mail/orderInfo', 'SendMailController@sendMail');
@@ -207,7 +207,7 @@ Route::get('mail/orderInfo', 'SendMailController@sendMail');
 //=================== SEARCH ========================
 
 Route::get('autocomplete-ajax', 'UserHomeController@autocomplete')->name('autocomplete-ajax');
-Route::post('tim-kiem/san-pham', 'UserHomeController@search');
+Route::post('search', 'UserHomeController@search');
 
 //=================== FILE MANAGER ======================
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['auth']], function () {

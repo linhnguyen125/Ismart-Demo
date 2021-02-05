@@ -147,6 +147,6 @@ class UserCheckoutController extends Controller
 
         Cart::destroy();
 
-        return redirect('thanh-toan')->with('status', 'Đặt hàng thành công');
+        return redirect('checkout/show')->with('status', 'Đặt hàng thành công');
     }
 }

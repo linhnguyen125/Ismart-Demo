@@ -48,13 +48,13 @@
                                     <tr>
                                         <td style="width: 30px;">{{ $t }}</td>
                                         <td>
-                                            <a href="{{ route('detail_product', [$row->options->slug, $row->id]) }}" title="" class="thumb">
+                                            <a href="{{ route('detail_product', $row->id) }}" title="" class="thumb">
                                                 <img class="img img-fluid" src="{{ asset($row->options->thumbnail) }}"
                                                     alt="">
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="{{ route('detail_product', [$row->options->slug, $row->id]) }}" title=""
+                                            <a href="{{ route('detail_product', $row->id) }}" title=""
                                                 class="name-product">{{ $row->name }}</a>
                                         </td>
                                         <td>{{ number_format($row->price, 0, ',', '.') }}đ</td>

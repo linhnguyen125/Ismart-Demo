@@ -194,11 +194,13 @@ class AdminUserController extends Controller
 
         RoleUser::where('user_id', $id)->delete();
 
-        foreach ($list_check as $item) {
-            RoleUser::create([
-                'user_id' => $id,
-                'role_id' => $item
-            ]);
+        if (!empty($list_check)) {
+            foreach ($list_check as $item) {
+                RoleUser::create([
+                    'user_id' => $id,
+                    'role_id' => $item
+                ]);
+            }
         }
 
         return redirect('admin/user/list')->with('status', 'Cập nhật thông tin thành công');

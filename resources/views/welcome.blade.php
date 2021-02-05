@@ -64,11 +64,11 @@
                         <ul class="list-item">
                             @foreach ($products as $product)
                                 <li>
-                                    <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
+                                    <a href="{{ route('detail_product', $product->id) }}" title=""
                                         class="thumb">
                                         <img class="img-fluid" src="{{ asset($product->avatar) }}">
                                     </a>
-                                    <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
+                                    <a href="{{ route('detail_product', $product->id) }}" title=""
                                         class="product-name text">{{ $product->title }}</a>
                                     <div class="price">
                                         <span class="new">{{ number_format($product->price, 0, '', '.') }}đ</span>
@@ -94,11 +94,11 @@
                         <ul class="list-item clearfix">
                             @foreach ($mobiles as $mobile)
                                 <li>
-                                    <a href="{{ route('detail_product', [$mobile->slug, $mobile->id]) }}" title=""
+                                    <a href="{{ route('detail_product', $mobile->id) }}" title=""
                                         class="thumb">
                                         <img src="{{ asset($mobile->avatar) }}" class="img-fluid">
                                     </a>
-                                    <a href="{{ route('detail_product', [$mobile->slug, $mobile->id]) }}" title=""
+                                    <a href="{{ route('detail_product', $mobile->id) }}" title=""
                                         class="product-name text">{{ $mobile->title }}</a>
                                     <div class="price">
                                         <span class="new">{{ number_format($mobile->price, 0, '', '.') }}đ</span>
@@ -126,11 +126,11 @@
                         <ul class="list-item clearfix">
                             @foreach ($laptops as $laptop)
                                 <li>
-                                    <a href="{{ route('detail_product', [$laptop->slug, $laptop->id]) }}" title=""
+                                    <a href="{{ route('detail_product', $laptop->id) }}" title=""
                                         class="thumb">
                                         <img class="img-fluid" src="{{ asset($laptop->avatar) }}">
                                     </a>
-                                    <a href="{{ route('detail_product', [$laptop->slug, $laptop->id]) }}" title=""
+                                    <a href="{{ route('detail_product', $laptop->id) }}" title=""
                                         class="product-name text">{{ $laptop->title }}</a>
                                     <div class="price">
                                         <span class="new">{{ number_format($laptop->price, 0, '', '.') }}đ</span>
@@ -161,13 +161,13 @@
                         <ul class="list-item">
                             @foreach ($list_cat_name_0 as $item)
                                 <li>
-                                    <a href="{{ route('cat_product', [$item->slug, $item->id]) }}"
+                                    <a href="{{ route('cat_product', $item->id) }}"
                                         title="">{{ $item->name }}</a>
                                     @if ($count[$item->id] > 0)
                                         <ul class="sub-menu">
                                             @foreach ($list_child[$item->id] as $child)
                                                 <li>
-                                                    <a href="{{ route('cat_product', [$child->slug, $child->id]) }}"
+                                                    <a href="{{ route('cat_product', $child->id) }}"
                                                         title="">{{ $child->name }}</a>
                                                 </li>
                                             @endforeach
@@ -188,12 +188,12 @@
                             @if ($bestSellingProducts->count() > 0)
                                 @foreach ($bestSellingProducts as $product)
                                     <li class="clearfix">
-                                        <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
+                                        <a href="{{ route('detail_product', $product->id) }}" title=""
                                             class="thumb fl-left">
                                             <img src="{{ asset($product->avatar) }}" alt="">
                                         </a>
                                         <div class="info fl-right">
-                                            <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
+                                            <a href="{{ route('detail_product', $product->id) }}" title=""
                                                 class="product-name">{{ $product->title }}</a>
                                             <div class="price">
                                                 <span class="new">{{ number_format($product->price, 0, '', '.') }}đ</span>

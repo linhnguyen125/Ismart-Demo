@@ -25,11 +25,11 @@
                             <ul class="list-item">
                                 @foreach ($posts as $post)
                                     <li class="clearfix">
-                                        <a href="{{ route('detail_blog', [$post->slug, $post->id]) }}" title="" class="thumb fl-left">
+                                        <a href="{{ route('detail_blog', $post->id) }}" title="" class="thumb fl-left">
                                             <img class="img-fluid" src="{{ asset($post->thumbnail) }}" alt="blog">
                                         </a>
                                         <div class="info fl-right">
-                                            <a href="{{ route('detail_blog', [$post->slug, $post->id]) }}" title=""
+                                            <a href="{{ route('detail_blog', $post->id) }}" title=""
                                                 class="title">{{ $post->title }}</a>
                                             <span class="create-date">{{ $post->created_at }}</span>
                                             <div class="desc">{!! $post->content !!}</div>
@@ -56,12 +56,12 @@
                             @if ($bestSellingProducts->count() > 0)
                                 @foreach ($bestSellingProducts as $product)
                                     <li class="clearfix">
-                                        <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
+                                        <a href="{{ route('detail_product', $product->id) }}" title=""
                                             class="thumb fl-left">
                                             <img src="{{ asset($product->avatar) }}" alt="">
                                         </a>
                                         <div class="info fl-right">
-                                            <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
+                                            <a href="{{ route('detail_product', $product->id) }}" title=""
                                                 class="product-name">{{ $product->title }}</a>
                                             <div class="price">
                                                 <span class="new">{{ number_format($product->price, 0, '', '.') }}đ</span>

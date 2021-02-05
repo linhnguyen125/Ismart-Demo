@@ -23,17 +23,6 @@
     <link href="{{ asset('css/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/style_user.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" type="text/css" />
-
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{{ asset('js/elevatezoom-master/jquery.elevatezoom.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/carousel/owl.carousel.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/main.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/user_main.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/filter_data.js') }}" type="text/javascript"></script>
-
 </head>
 
 <body>
@@ -91,6 +80,23 @@
                                 @endif
                             </ul>
                         </div>
+
+                        <div id="wp-respon-menu">
+                            <div id="respon-head">
+                                <h1>MENU</h1>
+                                <a href="" id="icon-menu-responsive"><i class="fas fa-bars"></i></a>
+                            </div>
+                            <ul id="respon-menu">
+                                <li><a href="">Trang chủ</a></li>
+                                <li><a href="">Menu 1</a></li>
+                                <li><a href="">Menu 2</a></li>
+                                <li><a href="">Menu 3</a></li>
+                                <li><a href="">Menu 4</a></li>
+                                <li><a href="">Menu 5</a></li>
+                                <li><a href="">Liên hệ</a></li>
+                            </ul>
+                        </div>
+
                     </div>
                 </div>
                 <div id="head-body" class="clearfix" style="position: relative">
@@ -132,13 +138,13 @@
                                         @foreach (Cart::content() as $row)
                                             <ul class="list-cart">
                                                 <li class="clearfix">
-                                                    <a href="{{ route('detail_product', [$row->options->slug, $row->id]) }}"
+                                                    <a href="{{ route('detail_product', $row->id) }}"
                                                         title="" class="thumb fl-left">
                                                         <img class="img-fluid"
                                                             src="{{ asset($row->options->thumbnail) }}" alt="">
                                                     </a>
                                                     <div class="info fl-right">
-                                                        <a href="{{ route('detail_product', [$row->options->slug, $row->id]) }}"
+                                                        <a href="{{ route('detail_product', $row->id) }}"
                                                             title="" class="product-name">{{ $row->name }}</a>
                                                         <p class="price">{{ number_format($row->total, 0, ',', '.') }}đ
                                                         </p>
@@ -248,6 +254,15 @@
             }(document, 'script', 'facebook-jssdk'));
 
         </script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="{{ asset('js/elevatezoom-master/jquery.elevatezoom.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/carousel/owl.carousel.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/main.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/user_main.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/filter_data.js') }}" type="text/javascript"></script>
 </body>
 
 </html>

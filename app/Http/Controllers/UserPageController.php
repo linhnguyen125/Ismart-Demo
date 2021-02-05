@@ -34,7 +34,7 @@ class UserPageController extends Controller
         return view('user.page.blog', compact('posts', 'bestSellingProducts'));
     }
 
-    function detail_blog($slug, $id)
+    function detail_blog($id)
     {
         $post = Post::find($id);
 

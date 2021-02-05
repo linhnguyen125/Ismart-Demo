@@ -71,10 +71,10 @@
                             <ul class="list-item">
                                 @foreach ($sameCategories as $sameCategory)
                                     <li>
-                                        <a href="{{route('detail_product', [$sameCategory->slug, $sameCategory->id])}}" title="" class="thumb">
+                                        <a href="{{route('detail_product', $sameCategory->id)}}" title="" class="thumb">
                                             <img src="{{ asset($sameCategory->avatar) }}">
                                         </a>
-                                        <a href="{{route('detail_product', [$sameCategory->slug, $sameCategory->id])}}" title="" class="product-name">{{ $sameCategory->title }}</a>
+                                        <a href="{{route('detail_product', $sameCategory->id)}}" title="" class="product-name">{{ $sameCategory->title }}</a>
                                         <div class="price">
                                             <span class="new">{{ number_format($sameCategory->price, 0, '', '.') }}đ</span>
                                             {{-- <span class="old">20.900.000đ</span>
@@ -100,12 +100,12 @@
                         <ul class="list-item">
                             @foreach ($list_cat_name_0 as $item)
                                 <li>
-                                    <a href="{{ route('cat_product', [$item->slug, $item->id]) }}" title="">{{ $item->name }}</a>
+                                    <a href="{{ route('cat_product', $item->id) }}" title="">{{ $item->name }}</a>
                                     @if ($count1[$item->id] > 0)
                                         <ul class="sub-menu">
                                             @foreach ($list_child[$item->id] as $child)
                                                 <li>
-                                                    <a href="{{ route('cat_product', [$child->slug, $child->id]) }}"
+                                                    <a href="{{ route('cat_product', $child->id) }}"
                                                         title="">{{ $child->name }}</a>
                                                 </li>
                                             @endforeach

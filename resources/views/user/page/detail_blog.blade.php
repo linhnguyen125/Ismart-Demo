@@ -48,12 +48,12 @@
                             @if ($bestSellingProducts->count() > 0)
                                 @foreach ($bestSellingProducts as $product)
                                     <li class="clearfix">
-                                        <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
+                                        <a href="{{ route('detail_product', $product->id) }}" title=""
                                             class="thumb fl-left">
                                             <img src="{{ asset($product->avatar) }}" alt="">
                                         </a>
                                         <div class="info fl-right">
-                                            <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
+                                            <a href="{{ route('detail_product', $product->id) }}" title=""
                                                 class="product-name">{{ $product->title }}</a>
                                             <div class="price">
                                                 <span class="new">{{ number_format($product->price, 0, '', '.') }}đ</span>

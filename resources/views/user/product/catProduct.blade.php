@@ -11,12 +11,12 @@
                         </li>
                         @if (!empty($cat_parent))
                             <li>
-                                <a href="{{ route('cat_product', [$cat_parent->slug, $cat_parent->id]) }}"
+                                <a href="{{ route('cat_product', $cat_parent->id) }}"
                                     title="">{{ $cat_parent->name }}</a>
                             </li>
                         @endif
                         <li>
-                            <a href="{{ route('cat_product', [$slug, $id]) }}" title="">{{ $cat_name }}</a>
+                            <a href="{{ route('cat_product', $id) }}" title="">{{ $cat_name }}</a>
                         </li>
                     </ul>
                 </div>
@@ -51,11 +51,11 @@
                             @else
                                 @foreach ($list_products as $product)
                                     <li>
-                                        <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
+                                        <a href="{{ route('detail_product', $product->id) }}" title=""
                                             class="thumb">
                                             <img src="{{ asset($product->avatar) }}">
                                         </a>
-                                        <a href="{{ route('detail_product', [$product->slug, $product->id]) }}" title=""
+                                        <a href="{{ route('detail_product', $product->id) }}" title=""
                                             class="product-name text">{{ $product->title }}</a>
                                         <div class="price">
                                             <span class="new">{{ number_format($product->price, 0, '', '.') }}đ</span>
@@ -89,12 +89,12 @@
                         <ul class="list-item">
                             @foreach ($list_cat_name_0 as $item)
                                 <li>
-                                    <a href="{{ route('cat_product', [$item->slug, $item->id]) }}" title="">{{ $item->name }}</a>
+                                    <a href="{{ route('cat_product', $item->id) }}" title="">{{ $item->name }}</a>
                                     @if ($count1[$item->id] > 0)
                                         <ul class="sub-menu">
                                             @foreach ($list_child[$item->id] as $child)
                                                 <li>
-                                                    <a href="{{ route('cat_product', [$child->slug, $child->id]) }}"
+                                                    <a href="{{ route('cat_product', $child->id) }}"
                                                         title="">{{ $child->name }}</a>
                                                 </li>
                                             @endforeach

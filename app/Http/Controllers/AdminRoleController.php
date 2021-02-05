@@ -175,13 +175,15 @@ class AdminRoleController extends Controller
                 'role_id' => $id,
                 'permission_id' => 21
             ]);
-
-            foreach ($list_check as $item) {
-                RolePermission::create([
-                    'role_id' => $id,
-                    'permission_id' => $item
-                ]);
+            if (!empty($list_check)) {
+                foreach ($list_check as $item) {
+                    RolePermission::create([
+                        'role_id' => $id,
+                        'permission_id' => $item
+                    ]);
+                }
             }
+
             return redirect('admin/role/list')->with('status', 'Thêm nhóm quyền thành công');
         } else {
             return redirect('admin/role/list')->with('status_err', 'Thêm nhóm quyền thất bại, vui lòng chọn quyền');
