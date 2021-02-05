@@ -1,4 +1,31 @@
 /*HEADER*/
+#site, #container, #header-wp, #head-top, #head-body{
+    position: relative;
+}
+#btn-respon, #main-menu-respon{
+    position: absolute;
+}
+#main-menu-respon{
+    display: none;
+}
+#main-menu-respon ul#respon-menu{
+    padding-left: 0;
+    width: 100%;
+    right: 0px;
+}
+#main-menu-respon ul#respon-menu li{
+    list-style: none;
+}
+#main-menu-respon ul#respon-menu li a{
+    display: block;
+    padding: 5px 5px;
+    border-top: 1px solid yellow;
+    text-decoration: none;
+    padding-left: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: white;
+}
 #head-top{ background: #d9263c;}
 #head-top #main-menu li{ float: left;}
 #head-top #payment-link{

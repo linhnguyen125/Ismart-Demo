@@ -32,7 +32,7 @@
     </div>
 
     @php
-    $module_active = session('module_active');
+        $module_active = session('module_active');
     @endphp
     <div id="site">
         <div id="container">
@@ -49,16 +49,19 @@
                                 </li>
                                 <li>
                                     <a href="{{ url('blog') }}"
-                                        style="{{ $module_active == 'blog' ? 'color: yellow' : '' }}" title="">Blog</a>
+                                        style="{{ $module_active == 'blog' ? 'color: yellow' : '' }}"
+                                        title="">Blog</a>
                                 </li>
                                 <li>
                                     <a href="{{ url('introduce') }}"
-                                        style="{{ $module_active == 'introduce' ? 'color: yellow' : '' }}" title="">Giới
+                                        style="{{ $module_active == 'introduce' ? 'color: yellow' : '' }}"
+                                        title="">Giới
                                         thiệu</a>
                                 </li>
                                 <li>
                                     <a href="{{ url('contact') }}"
-                                        style="{{ $module_active == 'contact' ? 'color: yellow' : '' }}" title="">Liên
+                                        style="{{ $module_active == 'contact' ? 'color: yellow' : '' }}"
+                                        title="">Liên
                                         hệ</a>
                                 </li>
                                 @if (Route::has('login'))
@@ -68,7 +71,8 @@
                                         </li>
                                     @else
                                         <li><a href="{{ route('login') }}"
-                                                style="{{ $module_active == 'login' ? 'color: yellow' : '' }}">Đăng nhập</a>
+                                                style="{{ $module_active == 'login' ? 'color: yellow' : '' }}">Đăng
+                                                nhập</a>
                                         </li>
 
                                         @if (Route::has('register'))
@@ -80,31 +84,14 @@
                                 @endif
                             </ul>
                         </div>
-
-                        <div id="wp-respon-menu">
-                            <div id="respon-head">
-                                <h1>MENU</h1>
-                                <a href="" id="icon-menu-responsive"><i class="fas fa-bars"></i></a>
-                            </div>
-                            <ul id="respon-menu">
-                                <li><a href="">Trang chủ</a></li>
-                                <li><a href="">Menu 1</a></li>
-                                <li><a href="">Menu 2</a></li>
-                                <li><a href="">Menu 3</a></li>
-                                <li><a href="">Menu 4</a></li>
-                                <li><a href="">Menu 5</a></li>
-                                <li><a href="">Liên hệ</a></li>
-                            </ul>
-                        </div>
-
                     </div>
                 </div>
-                <div id="head-body" class="clearfix" style="position: relative">
+                <div id="head-body" class="clearfix">
                     <div class="wp-inner">
                         <a href="{{ url('/') }}" title="" id="logo" class="fl-left"><img
                                 src="{{ asset('images/logo.png') }}" /></a>
                         <div id="search-wp" class="fl-left">
-                            <form method="POST" action="{{ url('tim-kiem/san-pham') }}" autocomplete="off">
+                            <form method="POST" action="{{ url('search') }}" autocomplete="off" class="d-flex">
                                 @csrf
                                 <input type="text" name="keyword" id="s" value="{{ request()->input('keyword') }}"
                                     placeholder="Nhập từ khóa tìm kiếm tại đây!"
@@ -120,15 +107,59 @@
                                 <span class="title">Tư vấn</span>
                                 <span class="phone">0981.958.120</span>
                             </div>
+                            <div id="main-menu-respon">
+                                <ul id="respon-menu">
+                                    <li>
+                                        <a href="{{ url('/') }}"
+                                            style="{{ $module_active == 'home' ? 'color: yellow' : '' }}" title="">Trang
+                                            chủ</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('blog') }}"
+                                            style="{{ $module_active == 'blog' ? 'color: yellow' : '' }}"
+                                            title="">Blog</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('introduce') }}"
+                                            style="{{ $module_active == 'introduce' ? 'color: yellow' : '' }}"
+                                            title="">Giới
+                                            thiệu</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('contact') }}"
+                                            style="{{ $module_active == 'contact' ? 'color: yellow' : '' }}"
+                                            title="">Liên
+                                            hệ</a>
+                                    </li>
+                                    @if (Route::has('login'))
+                                        @auth
+                                            <li><a href="{{ url('/home') }}"
+                                                    style="{{ $module_active == 'user' ? 'color: yellow' : '' }}">Home</a>
+                                            </li>
+                                        @else
+                                            <li><a href="{{ route('login') }}"
+                                                    style="{{ $module_active == 'login' ? 'color: yellow' : '' }}">Đăng
+                                                    nhập</a>
+                                            </li>
+    
+                                            @if (Route::has('register'))
+                                                <li><a href="{{ route('register') }}"
+                                                        style="{{ $module_active == 'register' ? 'color: yellow' : '' }}">Đăng
+                                                        kí</a></li>
+                                            @endif
+                                        @endauth
+                                    @endif
+                                </ul>
+                            </div>
                             <div id="btn-respon" class="fl-right"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                            <a href="{{ url('/') }}" title="giỏ hàng" id="cart-respon-wp" class="fl-right">
+                            <a href="{{ route('cart_show') }}" title="giỏ hàng" id="cart-respon-wp" class="fl-right">
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                 <span id="num">{{ Cart::count() }}</span>
                             </a>
                             <div id="cart-wp" class="fl-right">
                                 <div id="btn-cart">
-                                    <a class="cart_show" href="{{ route('cart_show') }}"><i class="fa fa-shopping-cart"
-                                            aria-hidden="true"></i></a>
+                                    <a class="cart_show" href="{{ route('cart_show') }}"><i
+                                            class="fa fa-shopping-cart" aria-hidden="true"></i></a>
                                     <span id="num">{{ Cart::content()->count() }}</span>
                                 </div>
                                 <div id="dropdown">
@@ -138,15 +169,16 @@
                                         @foreach (Cart::content() as $row)
                                             <ul class="list-cart">
                                                 <li class="clearfix">
-                                                    <a href="{{ route('detail_product', $row->id) }}"
-                                                        title="" class="thumb fl-left">
+                                                    <a href="{{ route('detail_product', $row->id) }}" title=""
+                                                        class="thumb fl-left">
                                                         <img class="img-fluid"
                                                             src="{{ asset($row->options->thumbnail) }}" alt="">
                                                     </a>
                                                     <div class="info fl-right">
-                                                        <a href="{{ route('detail_product', $row->id) }}"
-                                                            title="" class="product-name">{{ $row->name }}</a>
-                                                        <p class="price">{{ number_format($row->total, 0, ',', '.') }}đ
+                                                        <a href="{{ route('detail_product', $row->id) }}" title=""
+                                                            class="product-name">{{ $row->name }}</a>
+                                                        <p class="price">
+                                                            {{ number_format($row->total, 0, ',', '.') }}đ
                                                         </p>
                                                         <p class="qty">Số lượng: <span>{{ $row->qty }}</span></p>
                                                     </div>
