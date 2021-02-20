@@ -111,7 +111,7 @@
                                 <td colspan="7">
                                     <div class="clearfix">
                                         <div class="fl-right">
-                                            <a href="{{ url('thanh-toan') }}" title="" id="checkout-cart">Thanh toán</a>
+                                            <a href="{{ url('checkout/show') }}" title="" id="checkout-cart">Thanh toán</a>
                                         </div>
                                     </div>
                                 </td>

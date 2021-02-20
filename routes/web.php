@@ -166,8 +166,8 @@ Route::middleware(['auth', 'verified', 'checkRole:21'])->group(function () {
 
 //=================== PAGE =======================
 
-Route::get('page/blog', 'UserPageController@blog');
-Route::get('page/blog/detail/{id}', 'UserPageController@detail_blog')->name('detail_blog');
+Route::get('blog', 'UserPageController@blog');
+Route::get('blog/detail/{id}', 'UserPageController@detail_blog')->name('detail_blog');
 
 //==================== HOME ======================
 

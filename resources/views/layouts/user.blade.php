@@ -115,6 +115,11 @@
                                             chủ</a>
                                     </li>
                                     <li>
+                                        <a href="{{ url('cart/show') }}"
+                                            style="{{ $module_active == 'cart' ? 'color: yellow' : '' }}"
+                                            title="">Giỏ hàng</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ url('blog') }}"
                                             style="{{ $module_active == 'blog' ? 'color: yellow' : '' }}"
                                             title="">Blog</a>

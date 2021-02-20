@@ -10,10 +10,17 @@ use Illuminate\Support\Str;
 class UserCartController extends Controller
 {
     //
+    function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            session(['module_active' => 'cart']);
+
+            return $next($request);
+        });
+    }
 
     function show()
     {
-
         return view('user.cart.show');
     }
 

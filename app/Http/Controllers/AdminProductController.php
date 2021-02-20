@@ -477,11 +477,10 @@ class AdminProductController extends Controller
         $request->validate(
             [
                 'thumbnail' => 'image',
-                'color_code' => 'max:7|regex:/^#[a-f0-9]{6}$/'
+                'color_code' => 'max:7'
             ],
             [
                 'required' => ':attribute không được để trống',
-                'regex' => ':attribute không hợp lệ',
                 'image' => ':attribute phải là file ảnh',
                 'max' => ':attribute có độ dài lớn nhất :max kí tự'
             ],
