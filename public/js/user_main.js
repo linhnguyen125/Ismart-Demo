@@ -15,7 +15,6 @@ $(function () {
         $("#list-thumb a#onn").click(function () {
             get_src = $(this).children('img').attr('src');
             $("#show img#show_img").attr('src', get_src);
-
             return false;
         });
     });
